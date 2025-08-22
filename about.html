@@ -11,6 +11,9 @@
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
     function changeLang(lang) {
+      // Guardar la selección en localStorage
+      localStorage.setItem('lang', lang);
+
       // Mostrar/ocultar secciones de contenido
       document.querySelectorAll("[data-lang]").forEach(el => {
         el.style.display = el.getAttribute("data-lang") === lang ? "block" : "none";
