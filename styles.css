@@ -14,7 +14,7 @@ h1, h2, h3 {
 /* Botones y enlaces */
 a, .btn-primary {
   color: #ffffff;
-  background-color: rgba(70, 90, 110, 0.7); /* azul gris semi-transparente */
+  background-color: rgba(120, 140, 160, 0.6); /* azul gris claro semi-transparente */
   text-decoration: none;
   padding: 8px 16px;
   border-radius: 4px;
@@ -22,9 +22,8 @@ a, .btn-primary {
   transition: background-color 0.3s ease;
 }
 
-/* Hover: fondo un poco más oscuro y menos transparente */
 a:hover, .btn-primary:hover {
-  background-color: rgba(50, 65, 85, 0.9);
+  background-color: rgba(90, 110, 130, 0.9); /* azul gris más oscuro para hover */
 }
 
 p.secondary-text {
