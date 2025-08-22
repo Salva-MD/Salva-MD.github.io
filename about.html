@@ -62,58 +62,15 @@
   <!-- Script externo para enlaces sociales -->
   <script src="socialButtons.js"></script>
 
-  <!-- Script para cargar navbar -->
+  <!-- Script para cargar navbar y manejar idiomas -->
   <script src="navbar.js"></script>
 
-  <!-- Funciones de cambio de idioma -->
   <script>
-    function changeLang(lang) {
-      localStorage.setItem('lang', lang);
-
-      document.querySelectorAll("[data-lang]").forEach(el => {
-        el.style.display = el.getAttribute("data-lang") === lang ? "block" : "none";
-      });
-
-      // Actualizar textos que están dentro de la navbar (ya cargada dinámicamente)
-      const titleText = document.getElementById("title-text");
-      if (titleText) {
-        titleText.textContent = lang === "es" ? "Sobre mí" : "About me";
-      }
-
-      const homeLink = document.getElementById("home-link");
-      if (homeLink) {
-        homeLink.textContent = lang === "es" ? "Inicio" : "Home";
-      }
-
-      const aboutLink = document.getElementById("nav-about");
-      if (aboutLink) {
-        aboutLink.textContent = lang === "es" ? "Sobre mí" : "About me";
-      }
-
-      const projectsLink = document.getElementById("nav-projects");
-      if (projectsLink) {
-        projectsLink.textContent = lang === "es" ? "Proyectos" : "Projects";
-      }
-
-      updateSocialLinks(lang); // Asegúrate que esta función esté definida en socialButtons.js
-
-      setActiveLangButton(lang);
-    }
-
-    function setActiveLangButton(activeLang) {
-      const btnES = document.querySelector("button[onclick=\"changeLang('es')\"]");
-      const btnEN = document.querySelector("button[onclick=\"changeLang('en')\"]");
-
-      if (activeLang === 'es') {
-        btnES?.classList.add('bg-gray-800', 'text-white');
-        btnEN?.classList.remove('bg-gray-800', 'text-white');
-        btnEN?.classList.add('bg-gray-200', 'text-black');
-      } else {
-        btnEN?.classList.add('bg-gray-800', 'text-white');
-        btnES?.classList.remove('bg-gray-800', 'text-white');
-        btnES?.classList.add('bg-gray-200', 'text-black');
-      }
-    }
+    document.addEventListener('DOMContentLoaded', () => {
+      const savedLang = localStorage.getItem('lang') || 'es';
+      changeLang(savedLang);
+    });
   </script>
+
 </body>
 </html>
