@@ -5,10 +5,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Inicio - Salvador Medina</title>
 
-  <!-- Vincular CSS externo --> 
+  <!-- CSS personalizados -->
   <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="socialButtons.css" />
 
-  <!-- Tailwind CSS --> 
+  <!-- Tailwind CSS -->
   <script src="https://cdn.tailwindcss.com"></script>
 
   <script>
@@ -16,44 +17,32 @@
       localStorage.setItem('lang', lang);
 
       const pitch = document.getElementById("pitch-text");
-      const cvLink = document.getElementById("cv-link");
       const cvText = document.getElementById("cv-text");
 
       const navAbout = document.getElementById("nav-about");
       const navProjects = document.getElementById("nav-projects");
 
-      const linkLinkedIn = document.getElementById("link-linkedin");
-      const linkGitHub = document.getElementById("link-github");
-
       if (lang === "es") {
         document.title = "Inicio - Salvador Medina";
 
         pitch.textContent = "Data Scientist enfocado en soluciones analíticas con impacto real. Creo herramientas con Python y ML que generan insights accionables.";
-        cvLink.href = "https://drive.google.com/file/d/1uMpIBRQPQ3ed9jdh4qiOoB1bjcx3d5Yq/view";
         cvText.textContent = "CV";
 
         navAbout.textContent = "Sobre mí";
         navProjects.textContent = "Proyectos";
 
-        linkLinkedIn.textContent = "LinkedIn";
-        linkGitHub.textContent = "GitHub";
-
-        setActiveLangButton('es');
       } else {
         document.title = "Home - Salvador Medina";
 
         pitch.textContent = "Data Scientist focused on real-impact analytical solutions. I build tools with Python and ML that generate actionable insights.";
-        cvLink.href = "https://drive.google.com/file/d/1vCZZ7ZKSa3zMNU9uHDqx_hdD2eGOIwS_/view";
         cvText.textContent = "Resume";
 
         navAbout.textContent = "About me";
         navProjects.textContent = "Projects";
-
-        linkLinkedIn.textContent = "LinkedIn";
-        linkGitHub.textContent = "GitHub";
-
-        setActiveLangButton('en');
       }
+
+      updateSocialLinks(lang); // ← llamado al script externo
+      setActiveLangButton(lang);
     }
 
     function setActiveLangButton(activeLang) {
@@ -98,9 +87,9 @@
   <section class="max-w-2xl mx-auto py-10 text-center">
 
     <!-- Foto -->
-  <img src="assets/assets/20220310_145913.jpg" 
-       alt="Salvador Medina" 
-       class="w-48 h-48 rounded-full shadow-md mx-auto mb-4 object-cover object-top">
+    <img src="assets/assets/20220310_145913.jpg" 
+         alt="Salvador Medina" 
+         class="w-48 h-48 rounded-full shadow-md mx-auto mb-4 object-cover object-top">
 
     <!-- Mini pitch -->
     <p id="pitch-text" class="text-xl font-semibold px-4 mb-6">
@@ -108,25 +97,14 @@
     </p>
 
     <!-- Enlaces sociales -->
-    <div class="flex justify-center gap-6 text-base">
-      <a href="https://www.linkedin.com/in/salvador-m-donnadieu/" 
-         target="_blank" 
-         id="link-linkedin" 
-         class="text-gray-700 hover:underline">LinkedIn</a>
-
-      <a href="https://github.com/Salva-MD" 
-         target="_blank" 
-         id="link-github" 
-         class="text-gray-700 hover:underline">GitHub</a>
-
-      <a id="cv-link" 
-         href="https://drive.google.com/file/d/1uMpIBRQPQ3ed9jdh4qiOoB1bjcx3d5Yq/view" 
-         target="_blank" 
-         class="text-gray-700 hover:underline">
-         <span id="cv-text">CV</span>
-      </a>
+    <div class="flex justify-center gap-6 text-base social-buttons">
+      <a id="link-linkedin" target="_blank">LinkedIn</a>
+      <a id="link-github" target="_blank">GitHub</a>
+      <a id="cv-link" target="_blank"><span id="cv-text">CV</span></a>
     </div>
   </section>
 
+  <!-- Script para enlaces sociales -->
+  <script src="socialButtons.js"></script>
 </body>
 </html>
