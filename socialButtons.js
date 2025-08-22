@@ -1,31 +1,24 @@
-function updateSocialButtons(lang) {
-  const linkedin = document.getElementById("linkedin-link");
-  const github = document.getElementById("github-link");
+function updateSocialLinks(lang) {
+  const linkedin = document.getElementById("link-linkedin");
+  const github = document.getElementById("link-github");
   const cv = document.getElementById("cv-link");
-  const cvText = document.getElementById("cv-text"); // si usas un span para texto CV
+  const cvText = document.getElementById("cv-text");
 
   if (!linkedin || !github || !cv) {
     console.warn("Elementos sociales no encontrados en el DOM");
     return;
   }
 
+  // Enlaces constantes
+  linkedin.href = "https://www.linkedin.com/in/salvador-m-donnadieu/";
+  github.href = "https://github.com/Salva-MD";
+
+  // Solo cambia texto y enlace del CV según idioma
   if (lang === "es") {
-    linkedin.textContent = "LinkedIn";
-    linkedin.href = "https://www.linkedin.com/in/salvador-m-donnadieu/";
-
-    github.textContent = "GitHub";
-    github.href = "https://github.com/Salva-MD";
-
-    if(cvText) cvText.textContent = "CV";
+    if (cvText) cvText.textContent = "CV";
     cv.href = "https://drive.google.com/file/d/1uMpIBRQPQ3ed9jdh4qiOoB1bjcx3d5Yq/view";
   } else {
-    linkedin.textContent = "LinkedIn";
-    linkedin.href = "https://www.linkedin.com/in/salvador-m-donnadieu/";
-
-    github.textContent = "GitHub";
-    github.href = "https://github.com/Salva-MD";
-
-    if(cvText) cvText.textContent = "Resume";
+    if (cvText) cvText.textContent = "Resume";
     cv.href = "https://drive.google.com/file/d/1vCZZ7ZKSa3zMNU9uHDqx_hdD2eGOIwS_/view";
   }
 }
