@@ -16,24 +16,49 @@
       document.getElementById("title-text").textContent = lang === "es" ? "Sobre mí" : "About me";
       document.getElementById("home-link").textContent = lang === "es" ? "Inicio" : "Home";
       document.getElementById("projects-link").textContent = lang === "es" ? "Proyectos" : "Projects";
+
+      // Cambiar enlaces sociales y CV
+      const linkedin = document.getElementById("linkedin-link");
+      const github = document.getElementById("github-link");
+      const cv = document.getElementById("cv-link");
+
+      if(lang === "es") {
+        linkedin.textContent = "LinkedIn";
+        linkedin.href = "https://www.linkedin.com/in/salvador-m-donnadieu/";
+
+        github.textContent = "GitHub";
+        github.href = "https://github.com/Salva-MD";
+
+        cv.textContent = "CV";
+        cv.href = "https://drive.google.com/file/d/1uMpIBRQPQ3ed9jdh4qiOoB1bjcx3d5Yq/view";
+      } else {
+        linkedin.textContent = "LinkedIn";
+        linkedin.href = "https://www.linkedin.com/in/salvador-m-donnadieu/";
+
+        github.textContent = "GitHub";
+        github.href = "https://github.com/Salva-MD";
+
+        cv.textContent = "Resume";
+        cv.href = "https://drive.google.com/file/d/1vCZZ7ZKSa3zMNU9uHDqx_hdD2eGOIwS_/view";
+      }
     }
   </script>
 </head>
 <body class="bg-gray-100 text-gray-800">
 
-  <!-- ✅ Navbar fijo con botones consistentes -->
+  <!-- Navbar -->
   <nav class="bg-white shadow p-4 flex justify-between items-center">
     <div class="flex items-center space-x-6">
-      <!-- Título dinámico -->
       <span id="title-text" class="text-xl font-bold">Sobre mí</span>
-
-      <!-- Enlaces fijos (solo cambia texto) -->
       <a href="index.html" id="home-link" class="text-gray-700 hover:text-black transition">Inicio</a>
       <a href="projects.html" id="projects-link" class="text-gray-700 hover:text-black transition">Proyectos</a>
     </div>
+    <div class="space-x-6 flex items-center">
+      <a id="linkedin-link" href="https://www.linkedin.com/in/salvador-m-donnadieu/" target="_blank" class="text-gray-700 hover:text-black transition">LinkedIn</a>
+      <a id="github-link" href="https://github.com/Salva-MD" target="_blank" class="text-gray-700 hover:text-black transition">GitHub</a>
+      <a id="cv-link" href="https://drive.google.com/file/d/1uMpIBRQPQ3ed9jdh4qiOoB1bjcx3d5Yq/view" target="_blank" class="text-gray-700 hover:text-black transition">CV</a>
 
-    <!-- Botones de idioma -->
-    <div class="space-x-2">
+      <!-- Botones de idioma -->
       <button onclick="changeLang('es')" class="px-2 py-1 text-sm bg-blue-500 text-white rounded-sm">ES</button>
       <button onclick="changeLang('en')" class="px-2 py-1 text-sm bg-gray-300 text-black rounded-sm">EN</button>
     </div>
@@ -71,5 +96,11 @@
     </p>
   </section>
 
+  <script>
+    // Inicializar idioma por defecto en español
+    document.addEventListener("DOMContentLoaded", () => {
+      changeLang('es');
+    });
+  </script>
 </body>
 </html>
