@@ -1,0 +1,41 @@
+/* socialButtons.css */
+
+/* Contenedor para los botones sociales */
+.social-buttons {
+  display: flex;
+  gap: 16px; /* espacio entre botones */
+  justify-content: center; /* centrar horizontalmente */
+  margin: 20px 0;
+}
+
+/* Estilo base para todos los enlaces */
+.social-buttons a {
+  padding: 10px 18px;
+  border-radius: 6px;
+  font-weight: 600;
+  font-family: 'Montserrat', sans-serif;
+  text-decoration: none;
+  color: white;
+  background-color: #3498db; /* azul gris */
+  transition: background-color 0.3s ease;
+  font-size: 1rem;
+}
+
+/* Hover para los botones */
+.social-buttons a:hover {
+  background-color: #217dbb; /* azul más oscuro */
+}
+
+/* Ajustes para pantallas pequeñas */
+@media (max-width: 600px) {
+  .social-buttons {
+    flex-direction: column;
+    gap: 12px;
+    align-items: center;
+  }
+
+  .social-buttons a {
+    width: 100%;
+    text-align: center;
+  }
+}
