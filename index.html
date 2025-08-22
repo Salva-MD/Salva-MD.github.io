@@ -19,20 +19,27 @@
       const title = document.getElementById("title-text");
       const cvLink = document.getElementById("cv-link");
 
+      const navAbout = document.getElementById("nav-about");
+      const navProjects = document.getElementById("nav-projects");
+
       if (lang === "es") {
         pitch.textContent = "Data Scientist enfocado en soluciones analíticas con impacto real. Creo herramientas con Python y ML que generan insights accionables.";
         title.textContent = "Inicio";
         cvLink.href = "https://drive.google.com/file/d/1uMpIBRQPQ3ed9jdh4qiOoB1bjcx3d5Yq/view";
         cvLink.title = "CV en Español";
 
-        // Actualizar estilos botones para reflejar selección
-        setActiveLangButton('es');
+        navAbout.textContent = "Sobre mí";
+        navProjects.textContent = "Proyectos";
 
+        setActiveLangButton('es');
       } else if (lang === "en") {
         pitch.textContent = "Data Scientist focused on real-impact analytical solutions. I build tools with Python and ML that generate actionable insights.";
         title.textContent = "Home";
         cvLink.href = "https://drive.google.com/file/d/1vCZZ7ZKSa3zMNU9uHDqx_hdD2eGOIwS_/view";
         cvLink.title = "CV in English";
+
+        navAbout.textContent = "About me";
+        navProjects.textContent = "Projects";
 
         setActiveLangButton('en');
       }
@@ -66,10 +73,14 @@
 
 <body class="bg-gray-100 text-gray-800">
 
-  <!-- Navbar con título y selector de idioma -->
+  <!-- Navbar con título, enlaces y selector de idioma -->
   <nav class="bg-white shadow p-4 flex justify-between items-center">
     <div class="flex items-center space-x-6">
       <span id="title-text" class="text-xl font-bold">Inicio</span>
+
+      <!-- Enlaces de navegación -->
+      <a href="about.html" id="nav-about" class="text-blue-600 hover:underline">Sobre mí</a>
+      <a href="projects.html" id="nav-projects" class="text-green-600 hover:underline">Proyectos</a>
     </div>
 
     <div class="space-x-2">
