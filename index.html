@@ -11,77 +11,12 @@
 
   <!-- Tailwind CSS -->
   <script src="https://cdn.tailwindcss.com"></script>
-
-  <script>
-    function changeLang(lang) {
-      localStorage.setItem('lang', lang);
-
-      const pitch = document.getElementById("pitch-text");
-      const cvText = document.getElementById("cv-text");
-
-      const navAbout = document.getElementById("nav-about");
-      const navProjects = document.getElementById("nav-projects");
-
-      if (lang === "es") {
-        document.title = "Inicio - Salvador Medina";
-
-        pitch.textContent = "Data Scientist enfocado en soluciones analíticas con impacto real. Creo herramientas con Python y ML que generan insights accionables.";
-        cvText.textContent = "CV";
-
-        navAbout.textContent = "Sobre mí";
-        navProjects.textContent = "Proyectos";
-
-      } else {
-        document.title = "Home - Salvador Medina";
-
-        pitch.textContent = "Data Scientist focused on real-impact analytical solutions. I build tools with Python and ML that generate actionable insights.";
-        cvText.textContent = "Resume";
-
-        navAbout.textContent = "About me";
-        navProjects.textContent = "Projects";
-      }
-
-      updateSocialLinks(lang); // ← llamado al script externo
-      setActiveLangButton(lang);
-    }
-
-    function setActiveLangButton(activeLang) {
-      const btnES = document.querySelector("button[onclick=\"changeLang('es')\"]");
-      const btnEN = document.querySelector("button[onclick=\"changeLang('en')\"]");
-
-      if (activeLang === 'es') {
-        btnES.classList.add('bg-gray-800', 'text-white');
-        btnEN.classList.remove('bg-gray-800', 'text-white');
-        btnEN.classList.add('bg-gray-200', 'text-black');
-      } else {
-        btnEN.classList.add('bg-gray-800', 'text-white');
-        btnES.classList.remove('bg-gray-800', 'text-white');
-        btnES.classList.add('bg-gray-200', 'text-black');
-      }
-    }
-
-    document.addEventListener("DOMContentLoaded", () => {
-      const savedLang = localStorage.getItem('lang') || 'es';
-      changeLang(savedLang);
-    });
-  </script>
 </head>
 
 <body class="bg-gray-100 text-gray-800">
 
-  <!-- Navbar -->
-  <nav class="bg-white shadow p-4 flex justify-between items-center">
-    <div class="flex items-center space-x-6">
-      <span class="text-xl font-bold">Salvador Medina</span>
-      <a href="about.html" id="nav-about" class="text-gray-700 hover:underline">Sobre mí</a>
-      <a href="projects.html" id="nav-projects" class="text-gray-700 hover:underline">Proyectos</a>
-    </div>
-
-    <div class="space-x-2">
-      <button onclick="changeLang('es')" class="px-2 py-1 text-sm rounded-sm">ES</button>
-      <button onclick="changeLang('en')" class="px-2 py-1 text-sm rounded-sm">EN</button>
-    </div>
-  </nav>
+  <!-- Contenedor navbar -->
+  <div id="navbar-container"></div>
 
   <!-- Main section -->
   <section class="max-w-2xl mx-auto py-10 text-center">
@@ -104,7 +39,63 @@
     </div>
   </section>
 
+  <!-- Scripts -->
+
   <!-- Script para enlaces sociales -->
   <script src="socialButtons.js"></script>
+
+  <!-- Script para cargar navbar y manejo idioma -->
+  <script src="navbar.js"></script>
+
+  <!-- Funciones changeLang y setActiveLangButton (pueden ir aquí o en navbar.js) -->
+  <script>
+    function changeLang(lang) {
+      localStorage.setItem('lang', lang);
+
+      const pitch = document.getElementById("pitch-text");
+      const cvText = document.getElementById("cv-text");
+
+      const navAbout = document.getElementById("nav-about");
+      const navProjects = document.getElementById("nav-projects");
+
+      if (lang === "es") {
+        document.title = "Inicio - Salvador Medina";
+
+        if (pitch) pitch.textContent = "Data Scientist enfocado en soluciones analíticas con impacto real. Creo herramientas con Python y ML que generan insights accionables.";
+        if (cvText) cvText.textContent = "CV";
+
+        if (navAbout) navAbout.textContent = "Sobre mí";
+        if (navProjects) navProjects.textContent = "Proyectos";
+
+      } else {
+        document.title = "Home - Salvador Medina";
+
+        if (pitch) pitch.textContent = "Data Scientist focused on real-impact analytical solutions. I build tools with Python and ML that generate actionable insights.";
+        if (cvText) cvText.textContent = "Resume";
+
+        if (navAbout) navAbout.textContent = "About me";
+        if (navProjects) navProjects.textContent = "Projects";
+      }
+
+      updateSocialLinks(lang); // Asegúrate que está definida en socialButtons.js
+      setActiveLangButton(lang);
+    }
+
+    function setActiveLangButton(activeLang) {
+      const btnES = document.querySelector("button[onclick=\"changeLang('es')\"]");
+      const btnEN = document.querySelector("button[onclick=\"changeLang('en')\"]");
+
+      if (activeLang === 'es') {
+        btnES?.classList.add('bg-gray-800', 'text-white');
+        btnEN?.classList.remove('bg-gray-800', 'text-white');
+        btnEN?.classList.add('bg-gray-200', 'text-black');
+      } else {
+        btnEN?.classList.add('bg-gray-800', 'text-white');
+        btnES?.classList.remove('bg-gray-800', 'text-white');
+        btnES?.classList.add('bg-gray-200', 'text-black');
+      }
+    }
+  </script>
+
 </body>
 </html>
