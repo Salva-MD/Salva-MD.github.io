@@ -30,6 +30,49 @@ async function loadNavbar() {
   }
 }
 
+function changeLang(lang) {
+  localStorage.setItem('lang', lang);
+
+  document.querySelectorAll("[data-lang]").forEach(el => {
+    el.style.display = el.getAttribute("data-lang") === lang ? "block" : "none";
+  });
+
+  // Actualizar textos de la navbar
+  const homeLink = document.getElementById("home-link");
+  if (homeLink) {
+    homeLink.textContent = lang === "es" ? "Inicio" : "Home";
+  }
+
+  const aboutLink = document.getElementById("nav-about");
+  if (aboutLink) {
+    aboutLink.textContent = lang === "es" ? "Sobre mí" : "About me";
+  }
+
+  const projectsLink = document.getElementById("nav-projects");
+  if (projectsLink) {
+    projectsLink.textContent = lang === "es" ? "Proyectos" : "Projects";
+  }
+
+  updateSocialLinks(lang); // si usas esta función, sino la puedes quitar
+
+  setActiveLangButton(lang);
+}
+
+function setActiveLangButton(activeLang) {
+  const btnES = document.querySelector("button[onclick=\"changeLang('es')\"]");
+  const btnEN = document.querySelector("button[onclick=\"changeLang('en')\"]");
+
+  if (activeLang === 'es') {
+    btnES?.classList.add('bg-gray-800', 'text-white');
+    btnEN?.classList.remove('bg-gray-800', 'text-white');
+    btnEN?.classList.add('bg-gray-200', 'text-black');
+  } else {
+    btnEN?.classList.add('bg-gray-800', 'text-white');
+    btnES?.classList.remove('bg-gray-800', 'text-white');
+    btnES?.classList.add('bg-gray-200', 'text-black');
+  }
+}
+
 document.addEventListener('DOMContentLoaded', () => {
   loadNavbar();
 });
