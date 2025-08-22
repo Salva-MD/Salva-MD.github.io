@@ -1,92 +1,100 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Proyectos - Salva Medina</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Proyectos - Salvador Medina</title>
+
+  <!-- CSS personalizados -->
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="socialButtons.css" />
+
+  <!-- Tailwind CSS -->
   <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Lógica de idioma y actualización de botones sociales -->
   <script>
-    // Función para cambiar idioma
     function changeLang(lang) {
+      localStorage.setItem('lang', lang);
+
       document.querySelectorAll("[data-lang]").forEach(el => {
         el.style.display = el.getAttribute("data-lang") === lang ? "block" : "none";
       });
+
+      document.getElementById("title-text").textContent = lang === "es" ? "Proyectos" : "Projects";
+      document.getElementById("home-link").textContent = lang === "es" ? "Inicio" : "Home";
+      document.getElementById("about-link").textContent = lang === "es" ? "Sobre mí" : "About me";
+
+      updateSocialLinks(lang);  // Actualización centralizada
+
+      setActiveLangButton(lang);
     }
+
+    function setActiveLangButton(activeLang) {
+      const btnES = document.querySelector("button[onclick=\"changeLang('es')\"]");
+      const btnEN = document.querySelector("button[onclick=\"changeLang('en')\"]");
+
+      if (activeLang === 'es') {
+        btnES.classList.add('bg-gray-800', 'text-white');
+        btnEN.classList.remove('bg-gray-800', 'text-white');
+        btnEN.classList.add('bg-gray-200', 'text-black');
+      } else {
+        btnEN.classList.add('bg-gray-800', 'text-white');
+        btnES.classList.remove('bg-gray-800', 'text-white');
+        btnES.classList.add('bg-gray-200', 'text-black');
+      }
+    }
+
+    document.addEventListener("DOMContentLoaded", () => {
+      const savedLang = localStorage.getItem('lang') || 'es';
+      changeLang(savedLang);
+    });
   </script>
 </head>
+
 <body class="bg-gray-100 text-gray-800">
 
-  <!-- Navbar con selector de idioma -->
+  <!-- Navbar -->
   <nav class="bg-white shadow p-4 flex justify-between items-center">
-    <h1 class="text-xl font-bold">Proyectos / Projects</h1>
+    <div class="flex items-center space-x-6">
+      <span id="title-text" class="text-xl font-bold">Proyectos</span>
+      <a href="index.html" id="home-link" class="text-gray-700 hover:underline">Inicio</a>
+      <a href="about.html" id="about-link" class="text-gray-700 hover:underline">Sobre mí</a>
+    </div>
     <div class="space-x-2">
-      <button onclick="changeLang('es')" class="px-3 py-1 bg-blue-500 text-white rounded">ES</button>
-      <button onclick="changeLang('en')" class="px-3 py-1 bg-gray-300 rounded">EN</button>
-      <a href="index.html" class="ml-4 text-blue-500 hover:underline">Inicio / Home</a>
+      <button onclick="changeLang('es')" class="px-2 py-1 text-sm rounded-sm">ES</button>
+      <button onclick="changeLang('en')" class="px-2 py-1 text-sm rounded-sm">EN</button>
     </div>
   </nav>
 
-  <!-- Contenedor de proyectos -->
-  <section class="max-w-6xl mx-auto py-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+  <!-- Contenido principal -->
+  <section class="max-w-3xl mx-auto py-10">
+    <!-- Título Proyecto -->
+    <h2 data-lang="es" class="text-3xl font-bold mb-4">Mis Proyectos</h2>
+    <h2 data-lang="en" class="text-3xl font-bold mb-4" style="display:none;">My Projects</h2>
 
-    <!-- Proyecto 1 -->
-    <div class="bg-white shadow-lg rounded-lg overflow-hidden" data-lang="es">
-      <img src="assets/python_data_wrangling.png" alt="Python Data Wrangling" class="w-full h-48 object-cover">
-      <div class="p-4">
-        <h3 class="text-xl font-bold mb-2">Python and Data Wrangling</h3>
-        <p class="text-gray-700 mb-3">Limpieza y manipulación de datos usando Pandas y NumPy, con notebooks explicativos.</p>
-        <a href="https://github.com/Salva-MD/Python-and-Data-Wrangling" class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">Ver en GitHub</a>
-      </div>
-    </div>
-
-    <div class="bg-white shadow-lg rounded-lg overflow-hidden" data-lang="en" style="display:none;">
-      <img src="assets/python_data_wrangling.png" alt="Python Data Wrangling" class="w-full h-48 object-cover">
-      <div class="p-4">
-        <h3 class="text-xl font-bold mb-2">Python and Data Wrangling</h3>
-        <p class="text-gray-700 mb-3">Data cleaning and manipulation using Pandas and NumPy, with explanatory notebooks.</p>
-        <a href="https://github.com/Salva-MD/Python-and-Data-Wrangling" class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">View on GitHub</a>
-      </div>
-    </div>
-
-    <!-- Proyecto 2 -->
-    <div class="bg-white shadow-lg rounded-lg overflow-hidden" data-lang="es">
-      <img src="assets/machine_learning.png" alt="Machine Learning" class="w-full h-48 object-cover">
-      <div class="p-4">
-        <h3 class="text-xl font-bold mb-2">Machine Learning</h3>
-        <p class="text-gray-700 mb-3">Modelos de clasificación y regresión aplicados a distintos datasets, con métricas y visualizaciones.</p>
-        <a href="https://github.com/Salva-MD/Machine-Learning" class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">Ver en GitHub</a>
-      </div>
-    </div>
-
-    <div class="bg-white shadow-lg rounded-lg overflow-hidden" data-lang="en" style="display:none;">
-      <img src="assets/machine_learning.png" alt="Machine Learning" class="w-full h-48 object-cover">
-      <div class="p-4">
-        <h3 class="text-xl font-bold mb-2">Machine Learning</h3>
-        <p class="text-gray-700 mb-3">Classification and regression models applied to different datasets, with metrics and visualizations.</p>
-        <a href="https://github.com/Salva-MD/Machine-Learning" class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">View on GitHub</a>
-      </div>
-    </div>
-
-    <!-- Proyecto 3 -->
-    <div class="bg-white shadow-lg rounded-lg overflow-hidden" data-lang="es">
-      <img src="assets/analisis_datos.png" alt="Análisis de Datos" class="w-full h-48 object-cover">
-      <div class="p-4">
-        <h3 class="text-xl font-bold mb-2">Análisis de Datos</h3>
-        <p class="text-gray-700 mb-3">Exploración de datos y visualizaciones que generan insights para la toma de decisiones.</p>
-        <a href="https://github.com/Salva-MD/Analisis-de-Datos" class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">Ver en GitHub</a>
-      </div>
-    </div>
-
-    <div class="bg-white shadow-lg rounded-lg overflow-hidden" data-lang="en" style="display:none;">
-      <img src="assets/analisis_datos.png" alt="Data Analysis" class="w-full h-48 object-cover">
-      <div class="p-4">
-        <h3 class="text-xl font-bold mb-2">Data Analysis</h3>
-        <p class="text-gray-700 mb-3">Data exploration and visualizations that generate actionable insights for decision-making.</p>
-        <a href="https://github.com/Salva-MD/Analisis-de-Datos" class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">View on GitHub</a>
-      </div>
-    </div>
-
+    <!-- Lista de Proyectos -->
+    <ul class="space-y-6">
+      <li data-lang="es">
+        <h3 class="text-2xl font-semibold">Proyecto A</h3>
+        <p>Descripción del proyecto A en español. Esto destaca los objetivos, tecnologías utilizadas y resultados alcanzados.</p>
+      </li>
+      <li data-lang="en" style="display:none;">
+        <h3 class="text-2xl font-semibold">Project A</h3>
+        <p>Description of project A in English. This highlights the objectives, used technologies, and achieved results.</p>
+      </li>
+      <!-- Puedes añadir más proyectos con los mismos atributos data-lang -->
+    </ul>
   </section>
 
+  <!-- Enlaces sociales y CV -->
+  <div class="social-buttons max-w-3xl mx-auto py-6">
+    <a id="linkedin-link" target="_blank">LinkedIn</a>
+    <a id="github-link" target="_blank">GitHub</a>
+    <a id="cv-link" target="_blank"><span id="cv-text">CV</span></a>
+  </div>
+
+  <!-- Script externo que actualiza los botones sociales -->
+  <script src="socialButtons.js"></script>
 </body>
 </html>
