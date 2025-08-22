@@ -2,6 +2,7 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Sobre mí - Salva Medina</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
@@ -15,16 +16,23 @@
 </head>
 <body class="bg-gray-100 text-gray-800">
 
-  <!-- Navbar con selector de idioma -->
+  <!-- Navbar con título dinámico y selector de idioma -->
   <nav class="bg-white shadow p-4 flex justify-between items-center">
-    <h1 class="text-xl font-bold">Sobre mí / About me</h1>
+    <div>
+      <span data-lang="es" class="text-xl font-bold">Sobre mí</span>
+      <span data-lang="en" class="text-xl font-bold" style="display:none;">About me</span>
+    </div>
     <div class="space-x-2">
       <button onclick="changeLang('es')" class="px-3 py-1 bg-blue-500 text-white rounded">ES</button>
       <button onclick="changeLang('en')" class="px-3 py-1 bg-gray-300 rounded">EN</button>
+      <a href="index.html" class="ml-4 text-blue-500 hover:underline" data-lang="es">Inicio</a>
+      <a href="index.html" class="ml-4 text-blue-500 hover:underline" data-lang="en" style="display:none;">Home</a>
+      <a href="projects.html" class="ml-2 text-green-500 hover:underline" data-lang="es">Proyectos</a>
+      <a href="projects.html" class="ml-2 text-green-500 hover:underline" data-lang="en" style="display:none;">Projects</a>
     </div>
   </nav>
 
-  <!-- Versión Español -->
+  <!-- Contenido Español -->
   <section class="max-w-3xl mx-auto py-10" data-lang="es">
     <h2 class="text-3xl font-bold mb-4">Sobre mí</h2>
     <p class="mb-4">
@@ -35,12 +43,18 @@
       Destaco por mi perfil analítico y orientado a resultados, con la habilidad de traducir necesidades de negocio en soluciones basadas en datos. 
       Tengo experiencia trabajando en entornos colaborativos y multidisciplinarios, comunicando hallazgos técnicos de forma clara a audiencias no técnicas.
     </p>
-    <p>
-      Estoy comprometido con la <strong>creación de valor a través del uso estratégico de los datos</strong>, alineando la analítica con los objetivos del negocio.  
+    <p class="mb-4">
+      Estoy comprometido con la <strong>creación de valor a través del uso estratégico de los datos</strong>, alineando la analítica con los objetivos del negocio.
     </p>
+
+    <!-- Botones de navegación -->
+    <div class="mt-6 space-x-4">
+      <a href="index.html" class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">Página Principal</a>
+      <a href="projects.html" class="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600">Proyectos</a>
+    </div>
   </section>
 
-  <!-- English Version -->
+  <!-- Contenido English -->
   <section class="max-w-3xl mx-auto py-10" data-lang="en" style="display:none;">
     <h2 class="text-3xl font-bold mb-4">About me</h2>
     <p class="mb-4">
@@ -51,9 +65,15 @@
       I stand out for my analytical and results-driven mindset, with the ability to translate business needs into data-driven solutions. 
       I have experience working in collaborative and multidisciplinary environments, communicating technical findings clearly to non-technical audiences.
     </p>
-    <p>
-      I am committed to <strong>creating value through the strategic use of data</strong>, aligning analytics with business objectives.  
+    <p class="mb-4">
+      I am committed to <strong>creating value through the strategic use of data</strong>, aligning analytics with business objectives.
     </p>
+
+    <!-- Navigation buttons -->
+    <div class="mt-6 space-x-4">
+      <a href="index.html" class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">Home</a>
+      <a href="projects.html" class="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600">Projects</a>
+    </div>
   </section>
 
 </body>
