@@ -2,32 +2,51 @@
 
 body {
   font-family: 'Open Sans', sans-serif;
+  /* Degradado sutil azul grisáceo claro a un tono más claro */
   background: linear-gradient(135deg, #e3f0f9, #c8d6e5);
   color: #2C3E50;
-  margin: 0;
-  padding: 0;
+  margin: 20px;
+  padding: 20px;
 }
 
 h1, h2, h3 {
   font-family: 'Montserrat', sans-serif;
   color: #2C3E50;
+  margin-bottom: 10px;
+}
+
+p {
+  margin-bottom: 15px;
 }
 
 a, .btn-primary {
+  background-color: rgba(52, 73, 94, 0.9); /* azul gris oscuro semitransparente */
   color: #ffffff;
-  background-color: rgba(52, 73, 94, 0.85); /* azul gris semi-transparente */
   text-decoration: none;
   padding: 8px 16px;
   border-radius: 4px;
   display: inline-block;
   transition: background-color 0.3s ease;
-  border: 1px solid rgba(52, 73, 94, 0.8);
 }
 
 a:hover, .btn-primary:hover {
-  background-color: rgba(52, 73, 94, 1); /* más sólido al hover */
+  background-color: rgba(39, 121, 189, 1); /* azul más intenso para hover */
+  cursor: pointer;
 }
 
 p.secondary-text {
   color: #95A5A6;
+}
+
+/* Responsividad básica */
+@media (max-width: 768px) {
+  body {
+    font-size: 14px;
+    margin: 10px;
+    padding: 10px;
+  }
+
+  h1 {
+    font-size: 24px;
+  }
 }
