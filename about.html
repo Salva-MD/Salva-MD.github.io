@@ -41,7 +41,29 @@
         cv.textContent = "Resume";
         cv.href = "https://drive.google.com/file/d/1vCZZ7ZKSa3zMNU9uHDqx_hdD2eGOIwS_/view";
       }
+
+      setActiveLangButton(lang);
     }
+
+    function setActiveLangButton(activeLang) {
+      const btnES = document.querySelector("button[onclick=\"changeLang('es')\"]");
+      const btnEN = document.querySelector("button[onclick=\"changeLang('en')\"]");
+
+      if (activeLang === 'es') {
+        btnES.classList.add('bg-gray-800', 'text-white');
+        btnEN.classList.remove('bg-gray-800', 'text-white');
+        btnEN.classList.add('bg-gray-200', 'text-black');
+      } else {
+        btnEN.classList.add('bg-gray-800', 'text-white');
+        btnES.classList.remove('bg-gray-800', 'text-white');
+        btnES.classList.add('bg-gray-200', 'text-black');
+      }
+    }
+
+    document.addEventListener("DOMContentLoaded", () => {
+      const savedLang = localStorage.getItem('lang') || 'es';
+      changeLang(savedLang);
+    });
   </script>
 </head>
 <body class="bg-gray-100 text-gray-800">
@@ -53,14 +75,11 @@
       <a href="index.html" id="home-link" class="text-gray-700 hover:text-black transition">Inicio</a>
       <a href="projects.html" id="projects-link" class="text-gray-700 hover:text-black transition">Proyectos</a>
     </div>
-    <div class="space-x-6 flex items-center">
-      <a id="linkedin-link" href="https://www.linkedin.com/in/salvador-m-donnadieu/" target="_blank" class="text-gray-700 hover:text-black transition">LinkedIn</a>
-      <a id="github-link" href="https://github.com/Salva-MD" target="_blank" class="text-gray-700 hover:text-black transition">GitHub</a>
-      <a id="cv-link" href="https://drive.google.com/file/d/1uMpIBRQPQ3ed9jdh4qiOoB1bjcx3d5Yq/view" target="_blank" class="text-gray-700 hover:text-black transition">CV</a>
 
-      <!-- Botones de idioma -->
-      <button onclick="changeLang('es')" class="px-2 py-1 text-sm bg-blue-500 text-white rounded-sm">ES</button>
-      <button onclick="changeLang('en')" class="px-2 py-1 text-sm bg-gray-300 text-black rounded-sm">EN</button>
+    <!-- Botones de idioma iguales que en home -->
+    <div class="space-x-2">
+      <button onclick="changeLang('es')" class="px-2 py-1 text-sm rounded-sm bg-gray-200 text-black">ES</button>
+      <button onclick="changeLang('en')" class="px-2 py-1 text-sm rounded-sm bg-gray-200 text-black">EN</button>
     </div>
   </nav>
 
@@ -96,11 +115,12 @@
     </p>
   </section>
 
-  <script>
-    // Inicializar idioma por defecto en español
-    document.addEventListener("DOMContentLoaded", () => {
-      changeLang('es');
-    });
-  </script>
+  <!-- Sección enlaces sociales y CV fuera del navbar, abajo -->
+  <footer class="max-w-3xl mx-auto py-6 flex justify-center gap-6 text-base">
+    <a id="linkedin-link" href="https://www.linkedin.com/in/salvador-m-donnadieu/" target="_blank" class="text-gray-700 hover:underline">LinkedIn</a>
+    <a id="github-link" href="https://github.com/Salva-MD" target="_blank" class="text-gray-700 hover:underline">GitHub</a>
+    <a id="cv-link" href="https://drive.google.com/file/d/1uMpIBRQPQ3ed9jdh4qiOoB1bjcx3d5Yq/view" target="_blank" class="text-gray-700 hover:underline">CV</a>
+  </footer>
+
 </body>
 </html>
