@@ -6,11 +6,11 @@ async function loadNavbar() {
     const html = await response.text();
     document.getElementById('navbar-container').innerHTML = html;
 
-    // Detectamos en qué página estamos
-    const path = window.location.pathname.split('/').pop();
+    // Obtener sólo el archivo del path, sin carpetas ni query params
+    const path = window.location.pathname.split('/').pop().split('?')[0].split('#')[0];
 
-    // Ocultamos el link de la página actual
-    if (path === 'index.html' || path === '') {
+    // Ocultar el link correspondiente según la página actual
+    if (path === '' || path === 'index.html') {
       const homeLink = document.getElementById('home-link');
       if (homeLink) homeLink.style.display = 'none';
     } else if (path === 'about.html') {
@@ -21,7 +21,7 @@ async function loadNavbar() {
       if (projectsLink) projectsLink.style.display = 'none';
     }
 
-    // Ejecutamos cambio de idioma para actualizar textos y estilos
+    // Actualizar idioma
     const savedLang = localStorage.getItem('lang') || 'es';
     changeLang(savedLang);
 
