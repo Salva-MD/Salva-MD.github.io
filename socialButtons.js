@@ -1,6 +1,6 @@
 function updateSocialLinks(lang) {
-  const linkedin = document.getElementById("link-linkedin");
-  const github = document.getElementById("link-github");
+  const linkedin = document.getElementById("linkedin-link");
+  const github = document.getElementById("github-link");
   const cv = document.getElementById("cv-link");
   const cvText = document.getElementById("cv-text");
 
