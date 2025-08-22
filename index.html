@@ -13,6 +13,8 @@
 
   <script>
     function changeLang(lang) {
+      localStorage.setItem('lang', lang); // Guardar selección
+
       const pitch = document.getElementById("pitch-text");
       const title = document.getElementById("title-text");
       const cvLink = document.getElementById("cv-link");
@@ -22,13 +24,43 @@
         title.textContent = "Inicio";
         cvLink.href = "https://drive.google.com/file/d/1uMpIBRQPQ3ed9jdh4qiOoB1bjcx3d5Yq/view";
         cvLink.title = "CV en Español";
+
+        // Actualizar estilos botones para reflejar selección
+        setActiveLangButton('es');
+
       } else if (lang === "en") {
         pitch.textContent = "Data Scientist focused on real-impact analytical solutions. I build tools with Python and ML that generate actionable insights.";
         title.textContent = "Home";
         cvLink.href = "https://drive.google.com/file/d/1vCZZ7ZKSa3zMNU9uHDqx_hdD2eGOIwS_/view";
         cvLink.title = "CV in English";
+
+        setActiveLangButton('en');
       }
     }
+
+    function setActiveLangButton(activeLang) {
+      const btnES = document.querySelector("button[onclick=\"changeLang('es')\"]");
+      const btnEN = document.querySelector("button[onclick=\"changeLang('en')\"]");
+
+      if (activeLang === 'es') {
+        btnES.classList.add('bg-blue-500', 'text-white');
+        btnES.classList.remove('bg-gray-300', 'text-black');
+
+        btnEN.classList.remove('bg-blue-500', 'text-white');
+        btnEN.classList.add('bg-gray-300', 'text-black');
+      } else {
+        btnEN.classList.add('bg-blue-500', 'text-white');
+        btnEN.classList.remove('bg-gray-300', 'text-black');
+
+        btnES.classList.remove('bg-blue-500', 'text-white');
+        btnES.classList.add('bg-gray-300', 'text-black');
+      }
+    }
+
+    document.addEventListener("DOMContentLoaded", () => {
+      const savedLang = localStorage.getItem('lang') || 'es'; // Por defecto español
+      changeLang(savedLang);
+    });
   </script>
 </head>
 
