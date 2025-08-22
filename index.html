@@ -8,41 +8,45 @@
   <!-- Tailwind CSS -->
   <script src="https://cdn.tailwindcss.com"></script>
 
-  <!-- Font Awesome CDN -->
-  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
-
   <script>
     function changeLang(lang) {
-      localStorage.setItem('lang', lang); // Guardar selección
+      localStorage.setItem('lang', lang);
 
       const pitch = document.getElementById("pitch-text");
-      const title = document.getElementById("title-text");
       const cvLink = document.getElementById("cv-link");
 
       const navAbout = document.getElementById("nav-about");
       const navProjects = document.getElementById("nav-projects");
 
+      const linkLinkedIn = document.getElementById("link-linkedin");
+      const linkGitHub = document.getElementById("link-github");
+      const linkCV = document.getElementById("link-cv");
+
       if (lang === "es") {
         pitch.textContent = "Data Scientist enfocado en soluciones analíticas con impacto real. Creo herramientas con Python y ML que generan insights accionables.";
-        title.textContent = "Inicio";
-        cvLink.href = "https://drive.google.com/file/d/1uMpIBRQPQ3ed9jdh4qiOoB1bjcx3d5Yq/view";
-        cvLink.title = "CV en Español";
 
         navAbout.textContent = "Sobre mí";
         navProjects.textContent = "Proyectos";
 
-        setActiveLangButton('es');
-      } else if (lang === "en") {
+        linkLinkedIn.textContent = "LinkedIn";
+        linkGitHub.textContent = "GitHub";
+        linkCV.textContent = "CV";
+
+        linkCV.href = "https://drive.google.com/file/d/1uMpIBRQPQ3ed9jdh4qiOoB1bjcx3d5Yq/view";
+      } else {
         pitch.textContent = "Data Scientist focused on real-impact analytical solutions. I build tools with Python and ML that generate actionable insights.";
-        title.textContent = "Home";
-        cvLink.href = "https://drive.google.com/file/d/1vCZZ7ZKSa3zMNU9uHDqx_hdD2eGOIwS_/view";
-        cvLink.title = "CV in English";
 
         navAbout.textContent = "About me";
         navProjects.textContent = "Projects";
 
-        setActiveLangButton('en');
+        linkLinkedIn.textContent = "LinkedIn";
+        linkGitHub.textContent = "GitHub";
+        linkCV.textContent = "Resume";
+
+        linkCV.href = "https://drive.google.com/file/d/1vCZZ7ZKSa3zMNU9uHDqx_hdD2eGOIwS_/view";
       }
+
+      setActiveLangButton(lang);
     }
 
     function setActiveLangButton(activeLang) {
@@ -65,7 +69,7 @@
     }
 
     document.addEventListener("DOMContentLoaded", () => {
-      const savedLang = localStorage.getItem('lang') || 'es'; // Por defecto español
+      const savedLang = localStorage.getItem('lang') || 'es';
       changeLang(savedLang);
     });
   </script>
@@ -76,11 +80,11 @@
   <!-- Navbar con título, enlaces y selector de idioma -->
   <nav class="bg-white shadow p-4 flex justify-between items-center">
     <div class="flex items-center space-x-6">
-      <span id="title-text" class="text-xl font-bold">Inicio</span>
+      <span class="text-xl font-bold">Inicio</span>
 
       <!-- Enlaces de navegación -->
-      <a href="about.html" id="nav-about" class="text-blue-600 hover:underline">Sobre mí</a>
-      <a href="projects.html" id="nav-projects" class="text-green-600 hover:underline">Proyectos</a>
+      <a href="about.html" id="nav-about" class="text-gray-700 hover:underline">Sobre mí</a>
+      <a href="projects.html" id="nav-projects" class="text-gray-700 hover:underline">Proyectos</a>
     </div>
 
     <div class="space-x-2">
@@ -100,31 +104,11 @@
       Data Scientist enfocado en soluciones analíticas con impacto real. Creo herramientas con Python y ML que generan insights accionables.
     </p>
 
-    <!-- Botones sociales -->
-    <div class="flex justify-center gap-6 mt-6 text-2xl">
-      <!-- LinkedIn -->
-      <a href="https://www.linkedin.com/in/salvador-m-donnadieu/" target="_blank" class="text-blue-700 hover:text-blue-900" title="LinkedIn">
-        <i class="fab fa-linkedin"></i>
-      </a>
-
-      <!-- GitHub -->
-      <a href="https://github.com/Salva-MD" target="_blank" class="text-gray-800 hover:text-black" title="GitHub">
-        <i class="fab fa-github"></i>
-      </a>
-
-      <!-- CV (dinámico) -->
-      <a id="cv-link" href="https://drive.google.com/file/d/1uMpIBRQPQ3ed9jdh4qiOoB1bjcx3d5Yq/view" target="_blank"
-         class="text-red-600 hover:text-red-800" title="CV en Español">
-        <i class="fas fa-file-alt"></i>
-      </a>
-
-      <!-- Email -->
-      <a 
-        href="mailto:s.donnadieu@outlook.com?subject=Contacto%20desde%20tu%20portafolio&body=Hola%20Salvador,%20me%20gustaría%20contactarte%20por%20tu%20trabajo%20como%20Data%20Scientist." 
-        class="text-green-700 hover:text-green-900" 
-        title="Enviar correo">
-        <i class="fas fa-envelope"></i>
-      </a>
+    <!-- Enlaces sociales texto -->
+    <div class="flex justify-center gap-6 mt-6 text-base text-gray-700">
+      <a id="link-linkedin" href="https://www.linkedin.com/in/salvador-m-donnadieu/" target="_blank" class="hover:underline">LinkedIn</a>
+      <a id="link-github" href="https://github.com/Salva-MD" target="_blank" class="hover:underline">GitHub</a>
+      <a id="link-cv" href="https://drive.google.com/file/d/1uMpIBRQPQ3ed9jdh4qiOoB1bjcx3d5Yq/view" target="_blank" class="hover:underline">CV</a>
     </div>
   </section>
 
