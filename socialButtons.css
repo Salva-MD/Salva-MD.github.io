@@ -1,11 +1,17 @@
-/* socialButtons.css */
-
 /* Contenedor para los botones sociales */
 .social-buttons {
   display: flex;
   gap: 16px; /* espacio entre botones */
   justify-content: center; /* centrar horizontalmente */
   margin: 20px 0;
+  position: fixed; /* fijo en el footer */
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background-color: #f9fafb; /* color claro de fondo para el footer */
+  padding: 10px 0;
+  box-shadow: 0 -2px 5px rgba(0,0,0,0.1);
+  z-index: 1000;
 }
 
 /* Estilo base para todos los enlaces */
@@ -16,14 +22,36 @@
   font-family: 'Montserrat', sans-serif;
   text-decoration: none;
   color: white;
-  background-color: #3498db; /* azul gris */
-  transition: background-color 0.3s ease;
   font-size: 1rem;
+  transition: background-color 0.3s ease;
+  min-width: 90px;
+  text-align: center;
 }
 
-/* Hover para los botones */
-.social-buttons a:hover {
-  background-color: #217dbb; /* azul más oscuro */
+/* Colores individuales para cada botón */
+#linkedin-link {
+  background-color: #0077B5; /* azul LinkedIn original */
+}
+#linkedin-link:hover {
+  background-color: #005983;
+}
+
+#github-link {
+  background-color: #d3d3d3; /* gris claro */
+  color: #333; /* texto gris oscuro para buen contraste */
+}
+#github-link:hover {
+  background-color: #b0b0b0;
+  color: #111;
+}
+
+#cv-link {
+  background-color: #fff9c4; /* amarillo muy claro */
+  color: #666; /* texto gris medio */
+}
+#cv-link:hover {
+  background-color: #fff59d;
+  color: #444;
 }
 
 /* Ajustes para pantallas pequeñas */
@@ -32,6 +60,9 @@
     flex-direction: column;
     gap: 12px;
     align-items: center;
+    position: static; /* para que no quede fijo en móviles si quieres */
+    padding: 20px 0;
+    box-shadow: none;
   }
 
   .social-buttons a {
