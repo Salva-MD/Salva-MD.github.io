@@ -1,41 +1,89 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Portafolio - Salva Medina</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Inicio - Salvador Medina</title>
+
+  <!-- Tailwind CSS -->
   <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Font Awesome CDN -->
+  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+
+  <script>
+    function changeLang(lang) {
+      const pitch = document.getElementById("pitch-text");
+      const title = document.getElementById("title-text");
+      const cvLink = document.getElementById("cv-link");
+
+      if (lang === "es") {
+        pitch.textContent = "Data Scientist enfocado en soluciones analíticas con impacto real. Creo herramientas con Python y ML que generan insights accionables.";
+        title.textContent = "Inicio";
+        cvLink.href = "https://drive.google.com/file/d/1uMpIBRQPQ3ed9jdh4qiOoB1bjcx3d5Yq/view";
+        cvLink.title = "CV en Español";
+      } else if (lang === "en") {
+        pitch.textContent = "Data Scientist focused on real-impact analytical solutions. I build tools with Python and ML that generate actionable insights.";
+        title.textContent = "Home";
+        cvLink.href = "https://drive.google.com/file/d/1vCZZ7ZKSa3zMNU9uHDqx_hdD2eGOIwS_/view";
+        cvLink.title = "CV in English";
+      }
+    }
+  </script>
 </head>
+
 <body class="bg-gray-100 text-gray-800">
 
-  <!-- Navbar -->
-  <nav class="bg-white shadow p-4 flex justify-between">
-    <h1 class="text-xl font-bold">Salva Medina</h1>
-    <div class="space-x-4">
-      <a href="index.html" class="hover:text-blue-500">Inicio</a>
-      <a href="projects.html" class="hover:text-blue-500">Proyectos</a>
-      <a href="about.html" class="hover:text-blue-500">Sobre mí</a>
+  <!-- Navbar con título y selector de idioma -->
+  <nav class="bg-white shadow p-4 flex justify-between items-center">
+    <div class="flex items-center space-x-6">
+      <span id="title-text" class="text-xl font-bold">Inicio</span>
+    </div>
+
+    <div class="space-x-2">
+      <button onclick="changeLang('es')" class="px-2 py-1 text-sm bg-blue-500 text-white rounded-sm">ES</button>
+      <button onclick="changeLang('en')" class="px-2 py-1 text-sm bg-gray-300 text-black rounded-sm">EN</button>
     </div>
   </nav>
 
-  <!-- Hero -->
-  <section class="text-center py-20">
-    <h2 class="text-4xl font-bold mb-4">Hola 👋 Soy Data Scientist</h2>
-    <p class="text-lg mb-6 max-w-2xl mx-auto">
-      Me especializo en análisis de datos, machine learning y visualización para resolver problemas de negocio.
-    </p>
-    <a href="projects.html" class="bg-blue-500 text-white px-6 py-3 rounded-lg shadow hover:bg-blue-600">
-      Ver mis proyectos
-    </a>
-  </section>
+  <!-- Sección de presentación -->
+  <section class="max-w-2xl mx-auto py-10 text-center">
 
-  <!-- Footer -->
-  <footer class="bg-white text-center p-4 mt-20 shadow">
-    <p>© 2025 Salva Medina · 
-      <a href="https://www.linkedin.com/" class="text-blue-500">LinkedIn</a> · 
-      <a href="https://github.com/Salva-MD" class="text-blue-500">GitHub</a>
+    <!-- Foto -->
+    <img src="avatar.jpg" alt="Salvador Medina" class="w-32 h-32 rounded-full shadow-md mx-auto mb-4">
+
+    <!-- Mini pitch -->
+    <p id="pitch-text" class="text-xl font-semibold px-4">
+      Data Scientist enfocado en soluciones analíticas con impacto real. Creo herramientas con Python y ML que generan insights accionables.
     </p>
-  </footer>
+
+    <!-- Botones sociales -->
+    <div class="flex justify-center gap-6 mt-6 text-2xl">
+      <!-- LinkedIn -->
+      <a href="https://www.linkedin.com/in/salvador-m-donnadieu/" target="_blank" class="text-blue-700 hover:text-blue-900" title="LinkedIn">
+        <i class="fab fa-linkedin"></i>
+      </a>
+
+      <!-- GitHub -->
+      <a href="https://github.com/Salva-MD" target="_blank" class="text-gray-800 hover:text-black" title="GitHub">
+        <i class="fab fa-github"></i>
+      </a>
+
+      <!-- CV (dinámico) -->
+      <a id="cv-link" href="https://drive.google.com/file/d/1uMpIBRQPQ3ed9jdh4qiOoB1bjcx3d5Yq/view" target="_blank"
+         class="text-red-600 hover:text-red-800" title="CV en Español">
+        <i class="fas fa-file-alt"></i>
+      </a>
+
+      <!-- Email -->
+      <a 
+        href="mailto:s.donnadieu@outlook.com?subject=Contacto%20desde%20tu%20portafolio&body=Hola%20Salvador,%20me%20gustaría%20contactarte%20por%20tu%20trabajo%20como%20Data%20Scientist." 
+        class="text-green-700 hover:text-green-900" 
+        title="Enviar correo">
+        <i class="fas fa-envelope"></i>
+      </a>
+    </div>
+  </section>
 
 </body>
 </html>
