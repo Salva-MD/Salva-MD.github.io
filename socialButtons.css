@@ -1,14 +1,14 @@
 /* Contenedor para los botones sociales */
 .social-buttons {
   display: flex;
-  gap: 16px; /* espacio entre botones */
-  justify-content: center; /* centrar horizontalmente */
+  gap: 16px;
+  justify-content: center;
   margin: 20px 0;
-  position: fixed; /* fijo en el footer */
+  position: fixed;
   bottom: 0;
   left: 0;
   width: 100%;
-  background-color: #f9fafb; /* color claro de fondo para el footer */
+  background-color: #f9fafb;
   padding: 10px 0;
   box-shadow: 0 -2px 5px rgba(0,0,0,0.1);
   z-index: 1000;
@@ -30,28 +30,24 @@
 
 /* Colores individuales para cada botón */
 #linkedin-link {
-  background-color: #0077B5; /* azul LinkedIn original */
+  background-color: #0A66C2; /* Azul oficial de LinkedIn */
 }
 #linkedin-link:hover {
-  background-color: #005983;
+  background-color: #004182; /* Azul más oscuro */
 }
 
 #github-link {
-  background-color: #d3d3d3; /* gris claro */
-  color: #333; /* texto gris oscuro para buen contraste */
+  background-color: #B0B0B0; /* Gris claro */
 }
 #github-link:hover {
-  background-color: #b0b0b0;
-  color: #111;
+  background-color: #808080; /* Gris medio */
 }
 
 #cv-link {
-  background-color: #fff9c4; /* amarillo muy claro */
-  color: #666; /* texto gris medio */
+  background-color: #F9E79F; /* Amarillo muy claro */
 }
 #cv-link:hover {
-  background-color: #fff59d;
-  color: #444;
+  background-color: #F7DC6F; /* Amarillo más intenso */
 }
 
 /* Ajustes para pantallas pequeñas */
@@ -60,7 +56,7 @@
     flex-direction: column;
     gap: 12px;
     align-items: center;
-    position: static; /* para que no quede fijo en móviles si quieres */
+    position: static;
     padding: 20px 0;
     box-shadow: none;
   }
