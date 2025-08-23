@@ -37,6 +37,10 @@
       object-fit: cover;
       object-position: 50% 20%; /* centra la cabeza */
     }
+
+    main p, main header, main footer {
+      line-height: 1.4;
+    }
   </style>
 </head>
 <body class="bg-gray-100 text-gray-800">
@@ -80,7 +84,7 @@
   <script src="socialButtons.js?v=1.0.0"></script>
   <script src="navbar.js?v=1.0.0"></script>
   <script>
-    // Cambiar idioma según localStorage
+    // Solo actualizar textos dinámicos, no tocar botones de idioma
     const lang = localStorage.getItem('lang') || 'es';
 
     const textContent = {
@@ -98,7 +102,7 @@
       }
     };
 
-    function changeLang(lang) {
+    function updateTexts(lang) {
       const texts = textContent[lang];
       document.getElementById('name-text').textContent = texts.name;
       document.getElementById('title-text').textContent = texts.title;
@@ -106,7 +110,7 @@
       document.getElementById('cv-text').textContent = texts.cv;
     }
 
-    changeLang(lang);
+    updateTexts(lang);
   </script>
 
 </body>
