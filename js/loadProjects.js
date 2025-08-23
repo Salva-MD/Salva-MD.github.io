@@ -1,13 +1,13 @@
 // Archivos de proyectos en español
 const projectFilesES = [
-  'projects/instacart.html',
+  'projects/music.html',
   'projects/beta_bank.html',
   'projects/megaline.html'
 ];
 
 // Archivos de proyectos en inglés
 const projectFilesEN = [
-  'projects/instacart_en.html',
+  'projects/music_en.html',
   'projects/beta_bank_en.html',
   'projects/megaline_en.html'
 ];
@@ -19,7 +19,6 @@ const version = '1.0.0';
 function loadProjects(lang) {
   container.innerHTML = '';
   
-  // Selecciona archivos según idioma
   const files = (lang === 'en') ? projectFilesEN : projectFilesES;
 
   files.forEach(file => {
@@ -31,11 +30,30 @@ function loadProjects(lang) {
       })
       .catch(error => console.error('Error al cargar el proyecto:', error));
   });
+
+  // Mensaje final de repositorios
+  const reposMessage = document.createElement('div');
+  reposMessage.classList.add('mt-8', 'text-center', 'text-gray-700');
+  reposMessage.innerHTML = (lang === 'en') ? `
+    <p>Some of my projects are available in the following repositories:</p>
+    <p>
+      <a href="https://github.com/Salva-MD/Python-and-Data-Wrangling" target="_blank" class="text-blue-600 hover:underline">Python and Data Wrangling</a> |
+      <a href="https://github.com/Salva-MD/Analisis-de-Datos" target="_blank" class="text-blue-600 hover:underline">Data Analysis</a> |
+      <a href="https://github.com/Salva-MD/Machine-Learning" target="_blank" class="text-blue-600 hover:underline">Machine Learning</a>
+    </p>
+  ` : `
+    <p>Algunos de mis proyectos están disponibles en los siguientes repositorios:</p>
+    <p>
+      <a href="https://github.com/Salva-MD/Python-and-Data-Wrangling" target="_blank" class="text-blue-600 hover:underline">Python y Data Wrangling</a> |
+      <a href="https://github.com/Salva-MD/Analisis-de-Datos" target="_blank" class="text-blue-600 hover:underline">Análisis de Datos</a> |
+      <a href="https://github.com/Salva-MD/Machine-Learning" target="_blank" class="text-blue-600 hover:underline">Machine Learning</a>
+    </p>
+  `;
+  container.appendChild(reposMessage);
 }
 
 // Función para manejar expansión de proyectos y carrusel
 function attachProjectEvents(container) {
-  // Expandir/colapsar proyectos
   container.querySelectorAll('.project-header').forEach(header => {
     header.addEventListener('click', () => {
       const body = header.nextElementSibling;
@@ -45,7 +63,6 @@ function attachProjectEvents(container) {
     });
   });
 
-  // Botón anterior del carrusel
   container.querySelectorAll('.prev-btn').forEach(btn => {
     btn.addEventListener('click', () => {
       const track = btn.parentElement.querySelector('.slider-track');
@@ -58,7 +75,6 @@ function attachProjectEvents(container) {
     });
   });
 
-  // Botón siguiente del carrusel
   container.querySelectorAll('.next-btn').forEach(btn => {
     btn.addEventListener('click', () => {
       const track = btn.parentElement.querySelector('.slider-track');
