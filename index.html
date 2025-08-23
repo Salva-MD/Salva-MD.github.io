@@ -39,9 +39,9 @@
 
     <!-- Enlaces sociales -->
     <footer class="social-buttons">
-      <a id="linkedin-link" target="_blank">LinkedIn</a>
-      <a id="github-link" target="_blank">GitHub</a>
-      <a id="cv-link" target="_blank">CV</a>
+      <a id="linkedin-link" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+      <a id="github-link" target="_blank" rel="noopener noreferrer">GitHub</a>
+      <a id="cv-link" target="_blank" rel="noopener noreferrer">CV</a>
     </footer>
   </section>
 
@@ -59,7 +59,6 @@
       localStorage.setItem('lang', lang);
 
       const pitch = document.getElementById("pitch-text");
-      const cvText = document.getElementById("cv-text");
 
       const navAbout = document.getElementById("nav-about");
       const navProjects = document.getElementById("nav-projects");
@@ -68,7 +67,6 @@
         document.title = "Inicio";
 
         if (pitch) pitch.textContent = "Data Scientist enfocado en soluciones analíticas con impacto real. Creo herramientas con Python y ML que generan insights accionables.";
-        if (cvText) cvText.textContent = "CV";
 
         if (navAbout) navAbout.textContent = "Sobre mí";
         if (navProjects) navProjects.textContent = "Proyectos";
@@ -77,7 +75,6 @@
         document.title = "Home";
 
         if (pitch) pitch.textContent = "Data Scientist focused on real-impact analytical solutions. I build tools with Python and ML that generate actionable insights.";
-        if (cvText) cvText.textContent = "Resume";
 
         if (navAbout) navAbout.textContent = "About me";
         if (navProjects) navProjects.textContent = "Projects";
