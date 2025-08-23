@@ -40,18 +40,15 @@
       line-height: 1.5;
     }
 
-    /* Reducir espacio entre navbar y nombre */
     main header {
       margin-top: 0.5rem;
-      margin-bottom: 1rem; /* espaciado adicional entre header y foto */
+      margin-bottom: 1rem;
     }
 
-    /* Mover imagen un poco hacia abajo */
     .profile-image {
       margin-top: 1.5rem;
     }
 
-    /* Espaciado del pitch */
     #pitch-text {
       margin-top: 1rem;
     }
@@ -98,8 +95,6 @@
   <script src="navbar.js?v=1.0.0"></script>
   <script>
     // Textos dinámicos y cambio de idioma
-    const lang = localStorage.getItem('lang') || 'es';
-
     const textContent = {
       es: {
         name: "Salvador Medina Donnadieu",
@@ -123,7 +118,20 @@
       document.getElementById('cv-text').textContent = texts.cv;
     }
 
-    updateTexts(lang);
+    // Inicializar textos según idioma guardado
+    document.addEventListener('DOMContentLoaded', () => {
+      const savedLang = localStorage.getItem('lang') || 'es';
+      updateTexts(savedLang);
+    });
+
+    // 🔹 Vincular actualización de textos al cambio de idioma
+    if (typeof changeLang === "function") {
+      const originalChangeLang = changeLang;
+      changeLang = function(lang) {
+        originalChangeLang(lang);
+        updateTexts(lang); // actualiza pitch, title y CV inmediatamente
+      }
+    }
   </script>
 
 </body>
