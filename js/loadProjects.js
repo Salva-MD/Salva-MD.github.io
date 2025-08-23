@@ -1,17 +1,26 @@
-const projectFiles = [
+const projectFilesES = [
   'projects/music.html',
   'projects/beta_bank.html',
   'projects/megaline.html'
 ];
 
-// Versión para evitar caché
-const version = '1.0.0';
+// Si más adelante quieres separar por idioma, puedes crear projectFilesEN
+const projectFilesEN = [
+  'projects/music_en.html',
+  'projects/beta_bank_en.html',
+  'projects/megaline_en.html'
+];
 
 const container = document.getElementById('projects-container');
+const version = '1.0.0';
 
-function loadProjects() {
+function loadProjects(lang) {
   container.innerHTML = '';
-  projectFiles.forEach(file => {
+  
+  // Selecciona archivos según idioma
+  const files = (lang === 'en') ? projectFilesEN : projectFilesES;
+
+  files.forEach(file => {
     fetch(`${file}?v=${version}`)
       .then(response => response.text())
       .then(html => {
@@ -22,7 +31,7 @@ function loadProjects() {
   });
 }
 
-// Configura la expansión de cada proyecto y el carrusel
+// Mantén la función attachProjectEvents igual (expansión + carrusel)
 function attachProjectEvents(container) {
   container.querySelectorAll('.project-header').forEach(header => {
     header.addEventListener('click', () => {
@@ -33,7 +42,6 @@ function attachProjectEvents(container) {
     });
   });
 
-  // Carrusel
   container.querySelectorAll('.prev-btn').forEach(btn => {
     btn.addEventListener('click', () => {
       const track = btn.parentElement.querySelector('.slider-track');
@@ -65,4 +73,9 @@ function getTranslateX(element) {
   return matrix.m41;
 }
 
-document.addEventListener('DOMContentLoaded', loadProjects);
+// Cargar proyectos al inicio según idioma guardado
+document.addEventListener('DOMContentLoaded', () => {
+  const lang = localStorage.getItem('lang') || 'es';
+  loadProjects(lang);
+});
+
