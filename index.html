@@ -11,7 +11,6 @@
   <!-- CSS personalizados -->
   <link rel="stylesheet" href="styles.css?v=1.0.0" />
   <link rel="stylesheet" href="socialButtons.css?v=1.0.0" />
-
   <style>
     /* Animaciones */
     @keyframes fadeInUp {
@@ -30,16 +29,24 @@
     .delay-400 { animation-delay: 0.4s; }
 
     body {
+      max-height: 100vh;
       overflow: hidden;
     }
 
     .profile-image img {
+      width: 100%;
+      height: 100%;
       object-fit: cover;
-      object-position: 50% -35%; /* enfoca la cabeza aún más arriba */
+      object-position: 50% 0%; /* enfoca la parte superior de la cabeza */
     }
 
     main p, main header, main footer {
       line-height: 1.4;
+    }
+
+    /* Reducir espacio entre navbar y nombre */
+    main header {
+      margin-top: 1rem;
     }
   </style>
 </head>
@@ -48,36 +55,34 @@
   <!-- Navbar -->
   <div id="navbar-container"></div>
 
-  <!-- Main Section -->
-  <main class="h-screen flex flex-col justify-start items-center text-center px-4 gap-4 md:gap-6 mt-2">
+  <!-- Main Section: full screen, centrado vertical y horizontal -->
+  <main class="h-screen max-h-screen flex flex-col justify-evenly items-center text-center px-4 overflow-hidden">
 
     <!-- Nombre y título -->
     <header class="space-y-2">
-      <h1 data-lang="es" class="text-3xl md:text-4xl font-extrabold opacity-0 transform translate-y-4 animate-fadeInUp">Salvador Medina Donnadieu</h1>
-      <h1 data-lang="en" style="display:none;" class="text-3xl md:text-4xl font-extrabold opacity-0 transform translate-y-4 animate-fadeInUp">Salvador Medina Donnadieu</h1>
-      
-      <p data-lang="es" class="text-lg md:text-xl text-gray-600 opacity-0 transform translate-y-4 animate-fadeInUp delay-100">Data Scientist Jr</p>
-      <p data-lang="en" style="display:none;" class="text-lg md:text-xl text-gray-600 opacity-0 transform translate-y-4 animate-fadeInUp delay-100">Junior Data Scientist</p>
+      <h1 id="name-text" class="text-3xl md:text-4xl font-extrabold opacity-0 transform translate-y-4 animate-fadeInUp">
+        Salvador Medina Donnadieu
+      </h1>
+      <p id="title-text" class="text-lg md:text-xl text-gray-600 opacity-0 transform translate-y-4 animate-fadeInUp delay-100">
+        Data Scientist Jr
+      </p>
     </header>
 
-    <!-- Foto centrada en la cabeza -->
-    <div class="w-28 h-28 md:w-36 md:h-36 rounded-full overflow-hidden shadow-lg opacity-0 transform scale-90 animate-fadeIn delay-200 flex items-center justify-center profile-image">
+    <!-- Foto centrada y enfocada en la cabeza -->
+    <div class="w-32 h-32 md:w-40 md:h-40 rounded-full overflow-hidden shadow-lg opacity-0 transform scale-90 animate-fadeIn delay-200 profile-image">
       <img src="assets/assets/20220310_145913.jpg" alt="Salvador Medina">
     </div>
 
     <!-- Mini pitch -->
-    <p data-lang="es" class="text-sm md:text-lg font-semibold max-w-xs md:max-w-md opacity-0 transform translate-y-4 animate-fadeInUp delay-300">
+    <p id="pitch-text" class="text-sm md:text-lg font-semibold max-w-xs md:max-w-md opacity-0 transform translate-y-4 animate-fadeInUp delay-300">
       Data Scientist enfocado en soluciones analíticas con impacto real. Creo herramientas con Python y ML que generan insights accionables.
-    </p>
-    <p data-lang="en" style="display:none;" class="text-sm md:text-lg font-semibold max-w-xs md:max-w-md opacity-0 transform translate-y-4 animate-fadeInUp delay-300">
-      Data Scientist focused on analytical solutions with real impact. I build Python and ML tools that generate actionable insights.
     </p>
 
     <!-- Botones sociales -->
     <footer class="social-buttons flex justify-center gap-4 md:gap-6 text-sm md:text-lg opacity-0 animate-fadeIn delay-400">
       <a id="linkedin-link" target="_blank" rel="noopener noreferrer">LinkedIn</a>
       <a id="github-link" target="_blank" rel="noopener noreferrer">GitHub</a>
-      <a id="cv-link" target="_blank" rel="noopener noreferrer"><span data-lang="es">CV</span><span data-lang="en" style="display:none;">Resume</span></a>
+      <a id="cv-link" target="_blank" rel="noopener noreferrer"><span id="cv-text">CV</span></a>
     </footer>
 
   </main>
@@ -86,11 +91,33 @@
   <script src="socialButtons.js?v=1.0.0"></script>
   <script src="navbar.js?v=1.0.0"></script>
   <script>
-    // Inicializar idioma automáticamente
-    document.addEventListener('DOMContentLoaded', () => {
-      const savedLang = localStorage.getItem('lang') || 'es';
-      changeLang(savedLang);
-    });
+    // Textos dinámicos y cambio de idioma
+    const lang = localStorage.getItem('lang') || 'es';
+
+    const textContent = {
+      es: {
+        name: "Salvador Medina Donnadieu",
+        title: "Data Scientist Jr",
+        pitch: "Data Scientist enfocado en soluciones analíticas con impacto real. Creo herramientas con Python y ML que generan insights accionables.",
+        cv: "CV"
+      },
+      en: {
+        name: "Salvador Medina Donnadieu",
+        title: "Junior Data Scientist",
+        pitch: "Data Scientist focused on analytical solutions with real impact. I build Python and ML tools that generate actionable insights.",
+        cv: "Resume"
+      }
+    };
+
+    function updateTexts(lang) {
+      const texts = textContent[lang];
+      document.getElementById('name-text').textContent = texts.name;
+      document.getElementById('title-text').textContent = texts.title;
+      document.getElementById('pitch-text').textContent = texts.pitch;
+      document.getElementById('cv-text').textContent = texts.cv;
+    }
+
+    updateTexts(lang);
   </script>
 
 </body>
