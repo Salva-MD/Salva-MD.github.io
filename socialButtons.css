@@ -1,7 +1,7 @@
-/* Contenedor para los botones sociales */
+/* Contenedor de botones sociales */
 .social-buttons {
   display: flex;
-  gap: 16px;
+  gap: 12px;
   justify-content: center;
   margin: 20px 0;
   position: fixed;
@@ -9,60 +9,65 @@
   left: 0;
   width: 100%;
   background-color: #f9fafb;
-  padding: 10px 0;
+  padding: 8px 0;
   box-shadow: 0 -2px 5px rgba(0,0,0,0.1);
   z-index: 1000;
 }
 
-/* Estilo base para todos los enlaces */
+/* Estilo base de los botones */
 .social-buttons a {
-  padding: 10px 18px;
+  padding: 6px 14px;
   border-radius: 6px;
   font-weight: 600;
   font-family: 'Montserrat', sans-serif;
   text-decoration: none;
-  color: #333333;
-  font-size: 1rem;
-  transition: background-color 0.3s ease;
-  min-width: 90px;
+  color: #fff;
+  font-size: 0.875rem; /* tamaño más compacto */
+  min-width: 70px;
   text-align: center;
+  transition: all 0.3s ease;
 }
 
-/* Colores individuales para cada botón */
+/* LinkedIn con gradiente */
 #linkedin-link {
-  background-color: #0A66C2; /* Azul oficial de LinkedIn */
+  background: linear-gradient(135deg, #0A66C2, #004182);
 }
 #linkedin-link:hover {
-  background-color: #004182; /* Azul más oscuro */
+  filter: brightness(1.1);
 }
 
+/* GitHub elegante en negro */
 #github-link {
-  background-color: #B0B0B0; /* Gris claro */
+  background-color: #1B1F23;
 }
 #github-link:hover {
-  background-color: #808080; /* Gris medio */
+  background-color: #333;
 }
 
+/* CV / Resume con gradiente amarillo-naranja */
 #cv-link {
-  background-color: #F9E79F; /* Amarillo muy claro */
+  background: linear-gradient(135deg, #F9E79F, #F7DC6F);
+  color: #333;
 }
 #cv-link:hover {
-  background-color: #F7DC6F; /* Amarillo más intenso */
+  filter: brightness(1.05);
 }
 
-/* Ajustes para pantallas pequeñas */
+/* Ajustes móviles */
 @media (max-width: 600px) {
   .social-buttons {
     flex-direction: column;
-    gap: 12px;
+    gap: 8px;
     align-items: center;
     position: static;
-    padding: 20px 0;
+    padding: 12px 0;
     box-shadow: none;
   }
 
   .social-buttons a {
     width: 100%;
     text-align: center;
+    font-size: 0.875rem;
+    padding: 6px 0;
   }
 }
