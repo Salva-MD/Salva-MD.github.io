@@ -17,42 +17,43 @@ const version = '1.0.0';
 
 // Función para cargar proyectos según idioma
 function loadProjects(lang) {
-  container.innerHTML = '';
+  container.innerHTML = ''; // limpiar contenedor al inicio
   const files = (lang === 'en') ? projectFilesEN : projectFilesES;
 
-  // Usar Promise.all para esperar que todos los fetch terminen
+  // Obtener todos los contenidos primero
   const fetches = files.map(file =>
     fetch(`${file}?v=${version}`)
       .then(response => response.text())
-      .then(html => {
-        container.innerHTML += html;
-      })
-      .catch(error => console.error('Error al cargar el proyecto:', error))
   );
 
-  Promise.all(fetches).then(() => {
-    attachProjectEvents(container);
+  Promise.all(fetches)
+    .then(allHtml => {
+      // Insertar todo junto de una vez
+      container.innerHTML = allHtml.join('');
 
-    // Mensaje final de repositorios
-    const reposMessage = document.createElement('div');
-    reposMessage.classList.add('mt-8', 'text-center', 'text-gray-700');
-    reposMessage.innerHTML = (lang === 'en') ? `
-      <p>Some of my projects are available in the following repositories:</p>
-      <p>
-        <a href="https://github.com/Salva-MD/Python-and-Data-Wrangling" target="_blank" class="text-blue-600 hover:underline">Python and Data Wrangling</a> |
-        <a href="https://github.com/Salva-MD/Analisis-de-Datos" target="_blank" class="text-blue-600 hover:underline">Data Analysis</a> |
-        <a href="https://github.com/Salva-MD/Machine-Learning" target="_blank" class="text-blue-600 hover:underline">Machine Learning</a>
-      </p>
-    ` : `
-      <p>Algunos de mis proyectos están disponibles en los siguientes repositorios:</p>
-      <p>
-        <a href="https://github.com/Salva-MD/Python-and-Data-Wrangling" target="_blank" class="text-blue-600 hover:underline">Python y Data Wrangling</a> |
-        <a href="https://github.com/Salva-MD/Analisis-de-Datos" target="_blank" class="text-blue-600 hover:underline">Análisis de Datos</a> |
-        <a href="https://github.com/Salva-MD/Machine-Learning" target="_blank" class="text-blue-600 hover:underline">Machine Learning</a>
-      </p>
-    `;
-    container.appendChild(reposMessage);
-  });
+      attachProjectEvents(container);
+
+      // Mensaje final de repositorios
+      const reposMessage = document.createElement('div');
+      reposMessage.classList.add('mt-8', 'text-center', 'text-gray-700');
+      reposMessage.innerHTML = (lang === 'en') ? `
+        <p>Some of my projects are available in the following repositories:</p>
+        <p>
+          <a href="https://github.com/Salva-MD/Python-and-Data-Wrangling" target="_blank" class="text-blue-600 hover:underline">Python and Data Wrangling</a> |
+          <a href="https://github.com/Salva-MD/Analisis-de-Datos" target="_blank" class="text-blue-600 hover:underline">Data Analysis</a> |
+          <a href="https://github.com/Salva-MD/Machine-Learning" target="_blank" class="text-blue-600 hover:underline">Machine Learning</a>
+        </p>
+      ` : `
+        <p>Algunos de mis proyectos están disponibles en los siguientes repositorios:</p>
+        <p>
+          <a href="https://github.com/Salva-MD/Python-and-Data-Wrangling" target="_blank" class="text-blue-600 hover:underline">Python y Data Wrangling</a> |
+          <a href="https://github.com/Salva-MD/Analisis-de-Datos" target="_blank" class="text-blue-600 hover:underline">Análisis de Datos</a> |
+          <a href="https://github.com/Salva-MD/Machine-Learning" target="_blank" class="text-blue-600 hover:underline">Machine Learning</a>
+        </p>
+      `;
+      container.appendChild(reposMessage);
+    })
+    .catch(error => console.error('Error al cargar los proyectos:', error));
 }
 
 // Función para manejar expansión de proyectos y carrusel
