@@ -41,7 +41,7 @@
     <footer class="social-buttons">
       <a id="linkedin-link" target="_blank" rel="noopener noreferrer">LinkedIn</a>
       <a id="github-link" target="_blank" rel="noopener noreferrer">GitHub</a>
-      <a id="cv-link" target="_blank" rel="noopener noreferrer">CV</a>
+      <a id="cv-link" target="_blank" rel="noopener noreferrer"><span id="cv-text">CV</span></a>
     </footer>
   </section>
 
@@ -80,7 +80,7 @@
         if (navProjects) navProjects.textContent = "Projects";
       }
 
-      updateSocialLinks(lang); // Asegúrate que está definida en socialButtons.js
+      updateSocialLinks(lang);
       setActiveLangButton(lang);
     }
 
