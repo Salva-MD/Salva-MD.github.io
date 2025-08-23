@@ -5,33 +5,24 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Portafolio Interactivo - Salva Medina</title>
 
+  <!-- Tailwind CSS -->
   <script src="https://cdn.tailwindcss.com"></script>
-  <link rel="stylesheet" href="styles.css" />
-  <link rel="stylesheet" href="socialButtons.css" />
+
+  <!-- CSS con versión para evitar caché -->
+  <link rel="stylesheet" href="styles.css?v=1.0.0" />
+  <link rel="stylesheet" href="socialButtons.css?v=1.0.0" />
 </head>
 <body class="bg-gray-100 text-gray-800">
 
-<div id="navbar-container"></div>
+  <div id="navbar-container"></div>
 
-<!-- Contenedor para proyectos -->
-<section id="projects-container" class="max-w-5xl mx-auto py-10">
-  <h2 id="projects-title" class="text-3xl font-bold mb-6">Proyectos Destacados</h2>
-  <!-- Las tarjetas se cargarán dinámicamente aquí -->
-</section>
+  <!-- Contenedor donde se cargarán los proyectos -->
+  <section id="projects-container" class="max-w-5xl mx-auto py-10"></section>
 
-<!-- Scripts -->
-<script src="socialButtons.js"></script>
-<script src="navbar.js"></script>
-<script src="js/loadProjects.js"></script>
-<script>
-  document.addEventListener('DOMContentLoaded', () => {
-    const savedLang = localStorage.getItem('lang') || 'es';
-    changeLang(savedLang);
-    // Cambiar título según idioma
-    const title = document.getElementById('projects-title');
-    title.textContent = savedLang === 'es' ? 'Proyectos Destacados' : 'Featured Projects';
-  });
-</script>
+  <!-- Scripts con versión para evitar caché -->
+  <script src="js/loadProjects.js?v=1.0.0"></script>
+  <script src="socialButtons.js?v=1.0.0"></script>
+  <script src="navbar.js?v=1.0.0"></script>
 
 </body>
 </html>
