@@ -21,7 +21,7 @@ async function loadNavbar() {
       if (projectsLink) projectsLink.style.display = 'none';
     }
 
-    // Actualizar idioma
+    // Actualizar idioma al cargar
     const savedLang = localStorage.getItem('lang') || 'es';
     changeLang(savedLang);
 
@@ -56,6 +56,11 @@ function changeLang(lang) {
   updateSocialLinks(lang); // si usas esta función, sino la puedes quitar
 
   setActiveLangButton(lang);
+
+  // 🔹 Recargar proyectos dinámicos según el idioma
+  if (typeof loadProjects === "function") {
+    loadProjects(lang);
+  }
 }
 
 function setActiveLangButton(activeLang) {
@@ -76,3 +81,4 @@ function setActiveLangButton(activeLang) {
 document.addEventListener('DOMContentLoaded', () => {
   loadNavbar();
 });
+
