@@ -1,20 +1,32 @@
-<div class="bg-white rounded-xl shadow-md mb-6 overflow-hidden" data-lang="both">
+<div class="bg-white rounded-xl shadow-md mb-6 overflow-hidden">
   <button class="w-full text-left p-6 flex justify-between items-center project-header focus:outline-none">
-    <span class="text-2xl font-semibold" data-lang="es" style="display:none;">Predicción de Fuga de Clientes - Beta Bank</span>
-    <span class="text-2xl font-semibold" data-lang="en">Customer Churn Prediction - Beta Bank</span>
+    <span class="text-2xl font-semibold">🏦 Customer Churn Prediction - Beta Bank</span>
     <span class="text-xl transform transition-transform duration-300">▼</span>
   </button>
   <div class="px-6 py-4 hidden project-body">
-    <p data-lang="es" style="display:none;">Identificar clientes con mayor riesgo de cancelar su contrato para retenerlos.</p>
-    <p data-lang="en">Identify customers at risk of leaving the bank to retain them.</p>
+    
+    <p>
+      I developed a <strong>binary classification model</strong> to help <strong>Beta Bank</strong> identify customers at high risk of contract cancellation. 
+      Since retaining customers is more cost-effective than acquiring new ones, the solution aimed to 
+      <strong>predict churn and optimize retention strategies</strong>.
+    </p>
 
-    <p data-lang="es" style="display:none;">Python, pandas, numpy, matplotlib, seaborn, scikit-learn</p>
-    <p data-lang="en">Python, pandas, numpy, matplotlib, seaborn, scikit-learn</p>
+    <p class="mt-2">
+      <strong>Objective:</strong> Maximize the <code>F1-Score</code> (minimum 0.59) and evaluate overall model performance with <code>AUC-ROC</code>.
+    </p>
+
+    <p class="mt-2">
+      <strong>Stack:</strong> Python, pandas, numpy, matplotlib, seaborn, scikit-learn
+    </p>
+
+    <p class="mt-2">
+      <strong>Results:</strong> The best model achieved an <code>F1-Score of 0.62</code> and an <code>AUC-ROC of 0.86</code>, exceeding the bank’s required threshold.
+    </p>
 
     <div class="relative my-4">
       <div class="overflow-hidden rounded">
         <div class="flex transition-transform duration-500 slider-track">
-          <img src="assets/assets/beta1.png" class="w-64 flex-shrink-0" alt="">
+          <img src="assets/assets/beta1.png" class="w-64 flex-shrink-0" alt="Beta Bank project screenshot">
         </div>
       </div>
       <button class="absolute left-0 top-1/2 transform -translate-y-1/2 bg-white bg-opacity-50 p-2 rounded prev-btn">◀</button>
@@ -24,6 +36,6 @@
     <iframe src="https://nbviewer.org/github/Salva-MD/Machine-Learning/blob/main/Beta%20Bank/Beta%20Bank.ipynb"
             style="width:100%; height:400px;" frameborder="0"></iframe>
     <a href="https://github.com/Salva-MD/Machine-Learning/tree/main/Beta%20Bank"
-       target="_blank" class="text-blue-600 hover:underline mt-2 inline-block">View repository on GitHub</a>
+       target="_blank" class="text-blue-600 hover:underline mt-2 inline-block">🔗 View repository on GitHub</a>
   </div>
 </div>
