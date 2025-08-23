@@ -2,48 +2,248 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Proyectos - Salvador Medina</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Portafolio Interactivo - Salva Medina</title>
 
-  <!-- CSS personalizados -->
+  <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="styles.css" />
   <link rel="stylesheet" href="socialButtons.css" />
-
-  <!-- Tailwind CSS -->
-  <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body class="bg-gray-100 text-gray-800">
 
-  <!-- Aquí se carga el navbar dinámicamente -->
-  <div id="navbar-container"></div>
+<div id="navbar-container"></div>
 
-  <!-- Contenido principal -->
-  <section class="max-w-3xl mx-auto py-10">
-    <h2 data-lang="es" class="text-3xl font-bold mb-4">Mis Proyectos</h2>
-    <h2 data-lang="en" class="text-3xl font-bold mb-4" style="display:none;">My Projects</h2>
+<!-- 🇪🇸 Contenido Español -->
+<section class="max-w-5xl mx-auto py-10" data-lang="es">
+  <h2 class="text-3xl font-bold mb-6">Proyectos Destacados</h2>
 
-    <ul class="space-y-6">
-      <li data-lang="es">
-        <h3 class="text-2xl font-semibold">Proyecto A</h3>
-        <p>Descripción del proyecto A en español. Esto destaca los objetivos, tecnologías utilizadas y resultados alcanzados.</p>
-      </li>
-      <li data-lang="en" style="display:none;">
-        <h3 class="text-2xl font-semibold">Project A</h3>
-        <p>Description of project A in English. This highlights the objectives, used technologies, and achieved results.</p>
-      </li>
-      <!-- Más proyectos si quieres -->
-    </ul>
-  </section>
+  <!-- Proyecto 1: Preferencias Musicales -->
+  <div class="bg-white rounded-xl shadow-md mb-6 overflow-hidden">
+    <button class="w-full text-left p-6 flex justify-between items-center project-header focus:outline-none">
+      <span class="text-2xl font-semibold">Análisis de Preferencias Musicales</span>
+      <span class="text-xl transform transition-transform duration-300">▼</span>
+    </button>
+    <div class="px-6 py-4 hidden project-body">
+      <p><strong>Problema resuelto:</strong> Comparar preferencias musicales entre Springfield y Shelbyville y probar la hipótesis sobre variación según día y ciudad.</p>
+      <p><strong>Herramientas usadas:</strong> Python 3.x, Pandas</p>
+      <p><strong>Mi rol:</strong> Data Analyst: limpieza de datos, análisis exploratorio y prueba de hipótesis</p>
+      
+      <!-- Carrusel dinámico -->
+      <div class="relative my-4">
+        <div class="overflow-hidden rounded">
+          <div class="flex transition-transform duration-500 slider-track">
+            <img src="assets/assets/screenshot1.png" class="w-64 flex-shrink-0" alt="Captura 1">
+            <img src="assets/assets/screenshot2.png" class="w-64 flex-shrink-0" alt="Captura 2">
+            <!-- Agrega más imágenes si quieres -->
+          </div>
+        </div>
+        <button class="absolute left-0 top-1/2 transform -translate-y-1/2 bg-white bg-opacity-50 p-2 rounded prev-btn">◀</button>
+        <button class="absolute right-0 top-1/2 transform -translate-y-1/2 bg-white bg-opacity-50 p-2 rounded next-btn">▶</button>
+      </div>
 
-  <!-- Enlaces sociales y CV -->
-  <footer class="social-buttons">
-    <a id="linkedin-link" target="_blank">LinkedIn</a>
-    <a id="github-link" target="_blank">GitHub</a>
-    <a id="cv-link" target="_blank"><span id="cv-text">CV</span></a>
-  </footer>
+      <iframe src="https://nbviewer.org/github/Salva-MD/Python-and-Data-Wrangling/blob/main/Preferencias%20Musicales/Notebook.ipynb"
+              style="width:100%; height:400px;" frameborder="0"></iframe>
+      <a href="https://github.com/Salva-MD/Python-and-Data-Wrangling/tree/main/Preferencias%20Musicales"
+         target="_blank" class="text-blue-600 hover:underline mt-2 inline-block">Ver repositorio en GitHub</a>
+    </div>
+  </div>
 
-  <!-- Scripts -->
-  <script src="socialButtons.js"></script>
-  <script src="navbar.js"></script>
+  <!-- Proyecto 2: Beta Bank -->
+  <div class="bg-white rounded-xl shadow-md mb-6 overflow-hidden">
+    <button class="w-full text-left p-6 flex justify-between items-center project-header focus:outline-none">
+      <span class="text-2xl font-semibold">Predicción de Fuga de Clientes - Beta Bank</span>
+      <span class="text-xl transform transition-transform duration-300">▼</span>
+    </button>
+    <div class="px-6 py-4 hidden project-body">
+      <p><strong>Problema resuelto:</strong> Identificar clientes con mayor riesgo de cancelar su contrato para retenerlos.</p>
+      <p><strong>Herramientas usadas:</strong> Python, pandas, numpy, matplotlib, seaborn, scikit-learn</p>
+      <p><strong>Mi rol:</strong> Analista de datos: preprocesamiento, desarrollo del modelo de clasificación, evaluación y visualización</p>
+      
+      <div class="relative my-4">
+        <div class="overflow-hidden rounded">
+          <div class="flex transition-transform duration-500 slider-track">
+            <img src="assets/assets/screenshot1_beta.png" class="w-64 flex-shrink-0" alt="Captura 1">
+            <img src="assets/assets/screenshot2_beta.png" class="w-64 flex-shrink-0" alt="Captura 2">
+          </div>
+        </div>
+        <button class="absolute left-0 top-1/2 transform -translate-y-1/2 bg-white bg-opacity-50 p-2 rounded prev-btn">◀</button>
+        <button class="absolute right-0 top-1/2 transform -translate-y-1/2 bg-white bg-opacity-50 p-2 rounded next-btn">▶</button>
+      </div>
+
+      <iframe src="https://nbviewer.org/github/Salva-MD/Machine-Learning/blob/main/Beta%20Bank/Notebook.ipynb"
+              style="width:100%; height:400px;" frameborder="0"></iframe>
+      <a href="https://github.com/Salva-MD/Machine-Learning/tree/main/Beta%20Bank"
+         target="_blank" class="text-blue-600 hover:underline mt-2 inline-block">Ver repositorio en GitHub</a>
+    </div>
+  </div>
+
+  <!-- Proyecto 3: Megaline Telecom -->
+  <div class="bg-white rounded-xl shadow-md mb-6 overflow-hidden">
+    <button class="w-full text-left p-6 flex justify-between items-center project-header focus:outline-none">
+      <span class="text-2xl font-semibold">Análisis de Tarifas Prepago - Megaline Telecom</span>
+      <span class="text-xl transform transition-transform duration-300">▼</span>
+    </button>
+    <div class="px-6 py-4 hidden project-body">
+      <p><strong>Problema resuelto:</strong> Determinar cuál de las tarifas Surf o Ultimate genera mayores ingresos para Megaline.</p>
+      <p><strong>Herramientas usadas:</strong> Python, pandas, matplotlib, numpy, seaborn, scipy, math</p>
+      <p><strong>Mi rol:</strong> Analista de datos: limpieza de datos, análisis estadístico, visualización y generación de insights</p>
+      
+      <div class="relative my-4">
+        <div class="overflow-hidden rounded">
+          <div class="flex transition-transform duration-500 slider-track">
+            <img src="assets/assets/screenshot1_megaline.png" class="w-64 flex-shrink-0" alt="Captura 1">
+            <img src="assets/assets/screenshot2_megaline.png" class="w-64 flex-shrink-0" alt="Captura 2">
+          </div>
+        </div>
+        <button class="absolute left-0 top-1/2 transform -translate-y-1/2 bg-white bg-opacity-50 p-2 rounded prev-btn">◀</button>
+        <button class="absolute right-0 top-1/2 transform -translate-y-1/2 bg-white bg-opacity-50 p-2 rounded next-btn">▶</button>
+      </div>
+
+      <iframe src="https://nbviewer.org/github/Salva-MD/Analisis-de-Datos/blob/main/Megaline%20Telecomunicaciones/Notebook.ipynb"
+              style="width:100%; height:400px;" frameborder="0"></iframe>
+      <a href="https://github.com/Salva-MD/Analisis-de-Datos/tree/main/Megaline%20Telecomunicaciones"
+         target="_blank" class="text-blue-600 hover:underline mt-2 inline-block">Ver repositorio en GitHub</a>
+    </div>
+  </div>
+</section>
+
+<!-- 🇬🇧 Contenido English -->
+<section class="max-w-5xl mx-auto py-10" data-lang="en" style="display:none;">
+  <h2 class="text-3xl font-bold mb-6">Featured Projects</h2>
+
+  <!-- Proyecto 1 -->
+  <div class="bg-white rounded-xl shadow-md mb-6 overflow-hidden">
+    <button class="w-full text-left p-6 flex justify-between items-center project-header focus:outline-none">
+      <span class="text-2xl font-semibold">Music Preferences Analysis</span>
+      <span class="text-xl transform transition-transform duration-300">▼</span>
+    </button>
+    <div class="px-6 py-4 hidden project-body">
+      <p><strong>Problem solved:</strong> Compare music preferences between Springfield and Shelbyville and test the hypothesis about variation by weekday and city.</p>
+      <p><strong>Tools used:</strong> Python 3.x, Pandas</p>
+      <p><strong>Role:</strong> Data Analyst: data cleaning, exploratory analysis, hypothesis testing</p>
+      <div class="relative my-4">
+        <div class="overflow-hidden rounded">
+          <div class="flex transition-transform duration-500 slider-track">
+            <img src="assets/assets/screenshot1.png" class="w-64 flex-shrink-0" alt="Screenshot 1">
+            <img src="assets/assets/screenshot2.png" class="w-64 flex-shrink-0" alt="Screenshot 2">
+          </div>
+        </div>
+        <button class="absolute left-0 top-1/2 transform -translate-y-1/2 bg-white bg-opacity-50 p-2 rounded prev-btn">◀</button>
+        <button class="absolute right-0 top-1/2 transform -translate-y-1/2 bg-white bg-opacity-50 p-2 rounded next-btn">▶</button>
+      </div>
+      <iframe src="https://nbviewer.org/github/Salva-MD/Python-and-Data-Wrangling/blob/main/Preferencias%20Musicales/Notebook.ipynb"
+              style="width:100%; height:400px;" frameborder="0"></iframe>
+      <a href="https://github.com/Salva-MD/Python-and-Data-Wrangling/tree/main/Preferencias%20Musicales"
+         target="_blank" class="text-blue-600 hover:underline mt-2 inline-block">View repository on GitHub</a>
+    </div>
+  </div>
+
+  <!-- Proyecto 2 -->
+  <div class="bg-white rounded-xl shadow-md mb-6 overflow-hidden">
+    <button class="w-full text-left p-6 flex justify-between items-center project-header focus:outline-none">
+      <span class="text-2xl font-semibold">Customer Churn Prediction - Beta Bank</span>
+      <span class="text-xl transform transition-transform duration-300">▼</span>
+    </button>
+    <div class="px-6 py-4 hidden project-body">
+      <p><strong>Problem solved:</strong> Identify customers at risk of leaving the bank to retain them.</p>
+      <p><strong>Tools used:</strong> Python, pandas, numpy, matplotlib, seaborn, scikit-learn</p>
+      <p><strong>Role:</strong> Data Analyst: preprocessing, model development, evaluation, visualization</p>
+      <div class="relative my-4">
+        <div class="overflow-hidden rounded">
+          <div class="flex transition-transform duration-500 slider-track">
+            <img src="assets/assets/screenshot1_beta.png" class="w-64 flex-shrink-0" alt="Screenshot 1">
+            <img src="assets/assets/screenshot2_beta.png" class="w-64 flex-shrink-0" alt="Screenshot 2">
+          </div>
+        </div>
+        <button class="absolute left-0 top-1/2 transform -translate-y-1/2 bg-white bg-opacity-50 p-2 rounded prev-btn">◀</button>
+        <button class="absolute right-0 top-1/2 transform -translate-y-1/2 bg-white bg-opacity-50 p-2 rounded next-btn">▶</button>
+      </div>
+      <iframe src="https://nbviewer.org/github/Salva-MD/Machine-Learning/blob/main/Beta%20Bank/Notebook.ipynb"
+              style="width:100%; height:400px;" frameborder="0"></iframe>
+      <a href="https://github.com/Salva-MD/Machine-Learning/tree/main/Beta%20Bank"
+         target="_blank" class="text-blue-600 hover:underline mt-2 inline-block">View repository on GitHub</a>
+    </div>
+  </div>
+
+  <!-- Proyecto 3 -->
+  <div class="bg-white rounded-xl shadow-md mb-6 overflow-hidden">
+    <button class="w-full text-left p-6 flex justify-between items-center project-header focus:outline-none">
+      <span class="text-2xl font-semibold">Prepaid Plan Analysis - Megaline Telecom</span>
+      <span class="text-xl transform transition-transform duration-300">▼</span>
+    </button>
+    <div class="px-6 py-4 hidden project-body">
+      <p><strong>Problem solved:</strong> Determine which plan (Surf or Ultimate) generates more revenue for Megaline.</p>
+      <p><strong>Tools used:</strong> Python, pandas, matplotlib, numpy, seaborn, scipy, math</p>
+      <p><strong>Role:</strong> Data Analyst: data cleaning, statistical analysis, visualization, insights generation</p>
+      <div class="relative my-4">
+        <div class="overflow-hidden rounded">
+          <div class="flex transition-transform duration-500 slider-track">
+            <img src="assets/assets/screenshot1_megaline.png" class="w-64 flex-shrink-0" alt="Screenshot 1">
+            <img src="assets/assets/screenshot2_megaline.png" class="w-64 flex-shrink-0" alt="Screenshot 2">
+          </div>
+        </div>
+        <button class="absolute left-0 top-1/2 transform -translate-y-1/2 bg-white bg-opacity-50 p-2 rounded prev-btn">◀</button>
+        <button class="absolute right-0 top-1/2 transform -translate-y-1/2 bg-white bg-opacity-50 p-2 rounded next-btn">▶</button>
+      </div>
+      <iframe src="https://nbviewer.org/github/Salva-MD/Analisis-de-Datos/blob/main/Megaline%20Telecomunicaciones/Notebook.ipynb"
+              style="width:100%; height:400px;" frameborder="0"></iframe>
+      <a href="https://github.com/Salva-MD/Analisis-de-Datos/tree/main/Megaline%20Telecomunicaciones"
+         target="_blank" class="text-blue-600 hover:underline mt-2 inline-block">View repository on GitHub</a>
+    </div>
+  </div>
+</section>
+
+<!-- Scripts -->
+<script src="socialButtons.js"></script>
+<script src="navbar.js"></script>
+<script>
+  // Idiomas
+  document.addEventListener('DOMContentLoaded', () => {
+    const savedLang = localStorage.getItem('lang') || 'es';
+    changeLang(savedLang);
+  });
+
+  // Expandir proyectos
+  document.querySelectorAll('.project-header').forEach(header => {
+    header.addEventListener('click', () => {
+      const body = header.nextElementSibling;
+      body.classList.toggle('hidden');
+      const arrow = header.querySelector('span');
+      arrow.textContent = body.classList.contains('hidden') ? '▼' : '▲';
+    });
+  });
+
+  // Carrusel dinámico
+  document.querySelectorAll('.prev-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const track = btn.parentElement.querySelector('.slider-track');
+      const imgs = track.querySelectorAll('img');
+      const imgWidth = imgs[0].offsetWidth;
+      let currentTransform = getTranslateX(track);
+      currentTransform += imgWidth;
+      if (currentTransform > 0) currentTransform = -imgWidth * (imgs.length - 1);
+      track.style.transform = `translateX(${currentTransform}px)`;
+    });
+  });
+
+  document.querySelectorAll('.next-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const track = btn.parentElement.querySelector('.slider-track');
+      const imgs = track.querySelectorAll('img');
+      const imgWidth = imgs[0].offsetWidth;
+      let currentTransform = getTranslateX(track);
+      currentTransform -= imgWidth;
+      if (currentTransform < -imgWidth * (imgs.length - 1)) currentTransform = 0;
+      track.style.transform = `translateX(${currentTransform}px)`;
+    });
+  });
+
+  function getTranslateX(element) {
+    const style = window.getComputedStyle(element);
+    const matrix = new WebKitCSSMatrix(style.transform);
+    return matrix.m41;
+  }
+</script>
 
 </body>
+</html>
