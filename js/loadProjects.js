@@ -1,13 +1,13 @@
 // Archivos de proyectos en español
 const projectFilesES = [
-  'projects/music.html',
+  'projects/instacart.html',
   'projects/beta_bank.html',
   'projects/megaline.html'
 ];
 
 // Archivos de proyectos en inglés
 const projectFilesEN = [
-  'projects/music_en.html',
+  'projects/instacart_en.html',
   'projects/beta_bank_en.html',
   'projects/megaline_en.html'
 ];
