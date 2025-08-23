@@ -30,12 +30,12 @@
     .delay-400 { animation-delay: 0.4s; }
 
     body {
-      overflow: hidden; /* mantenemos el look sin scroll */
+      overflow: hidden; /* mantiene el look sin scroll */
     }
 
     .profile-image img {
       object-fit: cover;
-      object-position: 50% 10%; /* centra la cabeza */
+      object-position: 50% 10%; /* enfoca la cabeza */
     }
 
     main p, main header, main footer {
@@ -49,7 +49,7 @@
   <div id="navbar-container"></div>
 
   <!-- Main Section -->
-  <main class="h-screen flex flex-col justify-center items-center text-center px-4 gap-4 md:gap-6">
+  <main class="h-screen flex flex-col justify-start items-center text-center px-4 gap-4 md:gap-6 mt-2">
 
     <!-- Nombre y título -->
     <header class="space-y-2">
@@ -84,7 +84,7 @@
   <script src="socialButtons.js?v=1.0.0"></script>
   <script src="navbar.js?v=1.0.0"></script>
   <script>
-    // Solo actualizar textos dinámicos, no tocar botones de idioma
+    // Actualizar textos dinámicos según idioma
     const lang = localStorage.getItem('lang') || 'es';
 
     const textContent = {
