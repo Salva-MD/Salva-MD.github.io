@@ -1,11 +1,15 @@
-<div class="bg-white rounded-xl shadow-md mb-6 overflow-hidden">
+<div class="bg-white rounded-xl shadow-md mb-6 overflow-hidden" data-lang="both">
   <button class="w-full text-left p-6 flex justify-between items-center project-header focus:outline-none">
-    <span class="text-2xl font-semibold">Customer Churn Prediction - Beta Bank</span>
+    <span class="text-2xl font-semibold" data-lang="es" style="display:none;">Predicción de Fuga de Clientes - Beta Bank</span>
+    <span class="text-2xl font-semibold" data-lang="en">Customer Churn Prediction - Beta Bank</span>
     <span class="text-xl transform transition-transform duration-300">▼</span>
   </button>
   <div class="px-6 py-4 hidden project-body">
-    <p>Identify customers at risk of leaving the bank to retain them.</p>
-    <p>Python, pandas, numpy, matplotlib, seaborn, scikit-learn</p>
+    <p data-lang="es" style="display:none;">Identificar clientes con mayor riesgo de cancelar su contrato para retenerlos.</p>
+    <p data-lang="en">Identify customers at risk of leaving the bank to retain them.</p>
+
+    <p data-lang="es" style="display:none;">Python, pandas, numpy, matplotlib, seaborn, scikit-learn</p>
+    <p data-lang="en">Python, pandas, numpy, matplotlib, seaborn, scikit-learn</p>
 
     <div class="relative my-4">
       <div class="overflow-hidden rounded">
@@ -18,8 +22,8 @@
       <button class="absolute right-0 top-1/2 transform -translate-y-1/2 bg-white bg-opacity-50 p-2 rounded next-btn">▶</button>
     </div>
 
-        <iframe src="https://nbviewer.org/github/Salva-MD/Machine-Learning/blob/main/Beta%20Bank/Beta%20Bank.ipynb"
-        style="width:100%; height:400px;" frameborder="0"></iframe>
+    <iframe src="https://nbviewer.org/github/Salva-MD/Machine-Learning/blob/main/Beta%20Bank/Beta%20Bank.ipynb"
+            style="width:100%; height:400px;" frameborder="0"></iframe>
     <a href="https://github.com/Salva-MD/Machine-Learning/tree/main/Beta%20Bank"
        target="_blank" class="text-blue-600 hover:underline mt-2 inline-block">View repository on GitHub</a>
   </div>
