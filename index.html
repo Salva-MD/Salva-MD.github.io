@@ -11,6 +11,33 @@
   <!-- CSS personalizados -->
   <link rel="stylesheet" href="styles.css?v=1.0.0" />
   <link rel="stylesheet" href="socialButtons.css?v=1.0.0" />
+  <style>
+    /* Animaciones */
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(16px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: scale(0.9); }
+      to { opacity: 1; transform: scale(1); }
+    }
+    .animate-fadeInUp { animation: fadeInUp 0.6s forwards; }
+    .animate-fadeIn { animation: fadeIn 0.6s forwards; }
+    .delay-100 { animation-delay: 0.1s; }
+    .delay-200 { animation-delay: 0.2s; }
+    .delay-300 { animation-delay: 0.3s; }
+    .delay-400 { animation-delay: 0.4s; }
+
+    body {
+      max-height: 100vh;
+      overflow: hidden;
+    }
+
+    .profile-image img {
+      object-fit: cover;
+      object-position: 50% 20%; /* centra la cabeza */
+    }
+  </style>
 </head>
 <body class="bg-gray-100 text-gray-800">
 
@@ -18,23 +45,21 @@
   <div id="navbar-container"></div>
 
   <!-- Main Section: full screen, centrado vertical y horizontal -->
-  <main class="h-screen flex flex-col justify-evenly items-center text-center px-4">
+  <main class="h-screen max-h-screen flex flex-col justify-evenly items-center text-center px-4 overflow-hidden">
 
     <!-- Nombre y título -->
     <header class="space-y-2">
-      <h1 class="text-3xl md:text-4xl font-extrabold opacity-0 transform translate-y-4 animate-fadeInUp">
+      <h1 id="name-text" class="text-3xl md:text-4xl font-extrabold opacity-0 transform translate-y-4 animate-fadeInUp">
         Salvador Medina Donnadieu
       </h1>
-      <p class="text-lg md:text-xl text-gray-600 opacity-0 transform translate-y-4 animate-fadeInUp delay-100">
+      <p id="title-text" class="text-lg md:text-xl text-gray-600 opacity-0 transform translate-y-4 animate-fadeInUp delay-100">
         Data Scientist Jr
       </p>
     </header>
 
     <!-- Foto centrada en la cabeza -->
-    <div class="w-32 h-32 md:w-40 md:h-40 rounded-full overflow-hidden shadow-lg opacity-0 transform scale-90 animate-fadeIn delay-200 flex items-start justify-center">
-      <img src="assets/assets/20220310_145913.jpg" 
-           alt="Salvador Medina" 
-           class="w-full h-full object-cover object-[50%_25%]">
+    <div class="w-32 h-32 md:w-40 md:h-40 rounded-full overflow-hidden shadow-lg opacity-0 transform scale-90 animate-fadeIn delay-200 flex items-center justify-center profile-image">
+      <img src="assets/assets/20220310_145913.jpg" alt="Salvador Medina">
     </div>
 
     <!-- Mini pitch -->
@@ -55,27 +80,34 @@
   <script src="socialButtons.js?v=1.0.0"></script>
   <script src="navbar.js?v=1.0.0"></script>
   <script>
+    // Cambiar idioma según localStorage
     const lang = localStorage.getItem('lang') || 'es';
+
+    const textContent = {
+      es: {
+        name: "Salvador Medina Donnadieu",
+        title: "Data Scientist Jr",
+        pitch: "Data Scientist enfocado en soluciones analíticas con impacto real. Creo herramientas con Python y ML que generan insights accionables.",
+        cv: "CV"
+      },
+      en: {
+        name: "Salvador Medina Donnadieu",
+        title: "Junior Data Scientist",
+        pitch: "Data Scientist focused on analytical solutions with real impact. I build Python and ML tools that generate actionable insights.",
+        cv: "Resume"
+      }
+    };
+
+    function changeLang(lang) {
+      const texts = textContent[lang];
+      document.getElementById('name-text').textContent = texts.name;
+      document.getElementById('title-text').textContent = texts.title;
+      document.getElementById('pitch-text').textContent = texts.pitch;
+      document.getElementById('cv-text').textContent = texts.cv;
+    }
+
     changeLang(lang);
   </script>
-
-  <!-- Animaciones -->
-  <style>
-    @keyframes fadeInUp {
-      from { opacity: 0; transform: translateY(16px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-    @keyframes fadeIn {
-      from { opacity: 0; transform: scale(0.9); }
-      to { opacity: 1; transform: scale(1); }
-    }
-    .animate-fadeInUp { animation: fadeInUp 0.6s forwards; }
-    .animate-fadeIn { animation: fadeIn 0.6s forwards; }
-    .delay-100 { animation-delay: 0.1s; }
-    .delay-200 { animation-delay: 0.2s; }
-    .delay-300 { animation-delay: 0.3s; }
-    .delay-400 { animation-delay: 0.4s; }
-  </style>
 
 </body>
 </html>
