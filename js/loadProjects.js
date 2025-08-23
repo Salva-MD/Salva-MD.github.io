@@ -4,21 +4,25 @@ const projectFiles = [
   'projects/megaline.html'
 ];
 
+// Versión para evitar caché
+const version = '1.0.0';
+
 const container = document.getElementById('projects-container');
 
-function loadProjects(lang) {
+function loadProjects() {
   container.innerHTML = '';
   projectFiles.forEach(file => {
-    fetch(file)
-      .then(resp => resp.text())
+    fetch(`${file}?v=${version}`)
+      .then(response => response.text())
       .then(html => {
         container.innerHTML += html;
         attachProjectEvents(container);
-        setProjectLanguage(lang);
-      });
+      })
+      .catch(error => console.error('Error al cargar el proyecto:', error));
   });
 }
 
+// Configura la expansión de cada proyecto y el carrusel
 function attachProjectEvents(container) {
   container.querySelectorAll('.project-header').forEach(header => {
     header.addEventListener('click', () => {
@@ -29,6 +33,7 @@ function attachProjectEvents(container) {
     });
   });
 
+  // Carrusel
   container.querySelectorAll('.prev-btn').forEach(btn => {
     btn.addEventListener('click', () => {
       const track = btn.parentElement.querySelector('.slider-track');
@@ -54,28 +59,10 @@ function attachProjectEvents(container) {
   });
 }
 
-function setProjectLanguage(lang) {
-  container.querySelectorAll('[data-lang]').forEach(el => {
-    if (el.dataset.lang === 'both') return; // contenedor de tarjeta
-    if (el.dataset.lang === lang) {
-      el.style.display = '';
-    } else {
-      el.style.display = 'none';
-    }
-  });
-}
-
 function getTranslateX(element) {
   const style = window.getComputedStyle(element);
   const matrix = new WebKitCSSMatrix(style.transform);
   return matrix.m41;
 }
 
-// Escuchar cambio de idioma global
-document.addEventListener('langChanged', (e) => {
-  setProjectLanguage(e.detail.lang);
-});
-
-// Inicial
-const savedLang = localStorage.getItem('lang') || 'es';
-loadProjects(savedLang);
+document.addEventListener('DOMContentLoaded', loadProjects);
