@@ -1,10 +1,11 @@
+// Archivos de proyectos en español
 const projectFilesES = [
   'projects/music.html',
   'projects/beta_bank.html',
   'projects/megaline.html'
 ];
 
-// Si más adelante quieres separar por idioma, puedes crear projectFilesEN
+// Archivos de proyectos en inglés
 const projectFilesEN = [
   'projects/music_en.html',
   'projects/beta_bank_en.html',
@@ -14,6 +15,7 @@ const projectFilesEN = [
 const container = document.getElementById('projects-container');
 const version = '1.0.0';
 
+// Función para cargar proyectos según idioma
 function loadProjects(lang) {
   container.innerHTML = '';
   
@@ -31,8 +33,9 @@ function loadProjects(lang) {
   });
 }
 
-// Mantén la función attachProjectEvents igual (expansión + carrusel)
+// Función para manejar expansión de proyectos y carrusel
 function attachProjectEvents(container) {
+  // Expandir/colapsar proyectos
   container.querySelectorAll('.project-header').forEach(header => {
     header.addEventListener('click', () => {
       const body = header.nextElementSibling;
@@ -42,6 +45,7 @@ function attachProjectEvents(container) {
     });
   });
 
+  // Botón anterior del carrusel
   container.querySelectorAll('.prev-btn').forEach(btn => {
     btn.addEventListener('click', () => {
       const track = btn.parentElement.querySelector('.slider-track');
@@ -54,6 +58,7 @@ function attachProjectEvents(container) {
     });
   });
 
+  // Botón siguiente del carrusel
   container.querySelectorAll('.next-btn').forEach(btn => {
     btn.addEventListener('click', () => {
       const track = btn.parentElement.querySelector('.slider-track');
@@ -67,6 +72,7 @@ function attachProjectEvents(container) {
   });
 }
 
+// Obtener la posición actual del carrusel
 function getTranslateX(element) {
   const style = window.getComputedStyle(element);
   const matrix = new WebKitCSSMatrix(style.transform);
@@ -78,4 +84,3 @@ document.addEventListener('DOMContentLoaded', () => {
   const lang = localStorage.getItem('lang') || 'es';
   loadProjects(lang);
 });
-
