@@ -30,12 +30,12 @@
     .delay-400 { animation-delay: 0.4s; }
 
     body {
-      overflow: hidden; /* mantiene el look sin scroll */
+      overflow: hidden;
     }
 
     .profile-image img {
       object-fit: cover;
-      object-position: 50% 0%; /* enfoca la cabeza completamente arriba */
+      object-position: 50% -10%; /* enfoca la cabeza aún más arriba */
     }
 
     main p, main header, main footer {
@@ -53,8 +53,11 @@
 
     <!-- Nombre y título -->
     <header class="space-y-2">
-      <h1 id="name-text" class="text-3xl md:text-4xl font-extrabold opacity-0 transform translate-y-4 animate-fadeInUp"></h1>
-      <p id="title-text" class="text-lg md:text-xl text-gray-600 opacity-0 transform translate-y-4 animate-fadeInUp delay-100"></p>
+      <h1 data-lang="es" class="text-3xl md:text-4xl font-extrabold opacity-0 transform translate-y-4 animate-fadeInUp">Salvador Medina Donnadieu</h1>
+      <h1 data-lang="en" style="display:none;" class="text-3xl md:text-4xl font-extrabold opacity-0 transform translate-y-4 animate-fadeInUp">Salvador Medina Donnadieu</h1>
+      
+      <p data-lang="es" class="text-lg md:text-xl text-gray-600 opacity-0 transform translate-y-4 animate-fadeInUp delay-100">Data Scientist Jr</p>
+      <p data-lang="en" style="display:none;" class="text-lg md:text-xl text-gray-600 opacity-0 transform translate-y-4 animate-fadeInUp delay-100">Junior Data Scientist</p>
     </header>
 
     <!-- Foto centrada en la cabeza -->
@@ -63,50 +66,32 @@
     </div>
 
     <!-- Mini pitch -->
-    <p id="pitch-text" class="text-sm md:text-lg font-semibold max-w-xs md:max-w-md opacity-0 transform translate-y-4 animate-fadeInUp delay-300"></p>
+    <p data-lang="es" class="text-sm md:text-lg font-semibold max-w-xs md:max-w-md opacity-0 transform translate-y-4 animate-fadeInUp delay-300">
+      Data Scientist enfocado en soluciones analíticas con impacto real. Creo herramientas con Python y ML que generan insights accionables.
+    </p>
+    <p data-lang="en" style="display:none;" class="text-sm md:text-lg font-semibold max-w-xs md:max-w-md opacity-0 transform translate-y-4 animate-fadeInUp delay-300">
+      Data Scientist focused on analytical solutions with real impact. I build Python and ML tools that generate actionable insights.
+    </p>
 
     <!-- Botones sociales -->
     <footer class="social-buttons flex justify-center gap-4 md:gap-6 text-sm md:text-lg opacity-0 animate-fadeIn delay-400">
       <a id="linkedin-link" target="_blank" rel="noopener noreferrer">LinkedIn</a>
       <a id="github-link" target="_blank" rel="noopener noreferrer">GitHub</a>
-      <a id="cv-link" target="_blank" rel="noopener noreferrer"><span id="cv-text"></span></a>
+      <a id="cv-link" target="_blank" rel="noopener noreferrer"><span data-lang="es">CV</span><span data-lang="en" style="display:none;">Resume</span></a>
     </footer>
 
   </main>
 
   <!-- Scripts -->
-  <script>
-    // Función global para actualizar textos según idioma
-    window.updateTexts = function(lang) {
-      const textContent = {
-        es: {
-          name: "Salvador Medina Donnadieu",
-          title: "Data Scientist Jr",
-          pitch: "Data Scientist enfocado en soluciones analíticas con impacto real. Creo herramientas con Python y ML que generan insights accionables.",
-          cv: "CV"
-        },
-        en: {
-          name: "Salvador Medina Donnadieu",
-          title: "Junior Data Scientist",
-          pitch: "Data Scientist focused on analytical solutions with real impact. I build Python and ML tools that generate actionable insights.",
-          cv: "Resume"
-        }
-      };
-
-      const texts = textContent[lang];
-      document.getElementById('name-text').textContent = texts.name;
-      document.getElementById('title-text').textContent = texts.title;
-      document.getElementById('pitch-text').textContent = texts.pitch;
-      document.getElementById('cv-text').textContent = texts.cv;
-    };
-
-    // Inicializar textos al cargar
-    const savedLang = localStorage.getItem('lang') || 'es';
-    updateTexts(savedLang);
-  </script>
-
   <script src="socialButtons.js?v=1.0.0"></script>
   <script src="navbar.js?v=1.0.0"></script>
+  <script>
+    // Inicializar idioma automáticamente
+    document.addEventListener('DOMContentLoaded', () => {
+      const savedLang = localStorage.getItem('lang') || 'es';
+      changeLang(savedLang);
+    });
+  </script>
 
 </body>
 </html>
