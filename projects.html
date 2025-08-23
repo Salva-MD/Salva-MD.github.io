@@ -11,68 +11,17 @@
 
   <!-- Tailwind CSS -->
   <script src="https://cdn.tailwindcss.com"></script>
-
-  <!-- Lógica de idioma y actualización de botones sociales -->
-  <script>
-    function changeLang(lang) {
-      localStorage.setItem('lang', lang);
-
-      document.querySelectorAll("[data-lang]").forEach(el => {
-        el.style.display = el.getAttribute("data-lang") === lang ? "block" : "none";
-      });
-
-      document.getElementById("title-text").textContent = lang === "es" ? "Proyectos" : "Projects";
-      document.getElementById("home-link").textContent = lang === "es" ? "Inicio" : "Home";
-      document.getElementById("about-link").textContent = lang === "es" ? "Sobre mí" : "About me";
-
-      updateSocialLinks(lang);  // Actualización centralizada
-
-      setActiveLangButton(lang);
-    }
-
-    function setActiveLangButton(activeLang) {
-      const btnES = document.querySelector("button[onclick=\"changeLang('es')\"]");
-      const btnEN = document.querySelector("button[onclick=\"changeLang('en')\"]");
-
-      if (activeLang === 'es') {
-        btnES.classList.add('bg-gray-800', 'text-white');
-        btnEN.classList.remove('bg-gray-800', 'text-white');
-        btnEN.classList.add('bg-gray-200', 'text-black');
-      } else {
-        btnEN.classList.add('bg-gray-800', 'text-white');
-        btnES.classList.remove('bg-gray-800', 'text-white');
-        btnES.classList.add('bg-gray-200', 'text-black');
-      }
-    }
-
-    document.addEventListener("DOMContentLoaded", () => {
-      const savedLang = localStorage.getItem('lang') || 'es';
-      changeLang(savedLang);
-    });
-  </script>
 </head>
-
 <body class="bg-gray-100 text-gray-800">
 
-  <!-- Navbar -->
-  <nav class="bg-white shadow p-4 flex justify-between items-center">
-    <div class="flex items-center space-x-6">
-      <a href="index.html" id="home-link" class="text-gray-700 hover:underline">Inicio</a>
-      <a href="about.html" id="about-link" class="text-gray-700 hover:underline">Sobre mí</a>
-    </div>
-    <div class="space-x-2">
-      <button onclick="changeLang('es')" class="px-2 py-1 text-sm rounded-sm">ES</button>
-      <button onclick="changeLang('en')" class="px-2 py-1 text-sm rounded-sm">EN</button>
-    </div>
-  </nav>
+  <!-- Aquí se carga el navbar dinámicamente -->
+  <div id="navbar-container"></div>
 
   <!-- Contenido principal -->
   <section class="max-w-3xl mx-auto py-10">
-    <!-- Título Proyecto -->
     <h2 data-lang="es" class="text-3xl font-bold mb-4">Mis Proyectos</h2>
     <h2 data-lang="en" class="text-3xl font-bold mb-4" style="display:none;">My Projects</h2>
 
-    <!-- Lista de Proyectos -->
     <ul class="space-y-6">
       <li data-lang="es">
         <h3 class="text-2xl font-semibold">Proyecto A</h3>
@@ -82,7 +31,7 @@
         <h3 class="text-2xl font-semibold">Project A</h3>
         <p>Description of project A in English. This highlights the objectives, used technologies, and achieved results.</p>
       </li>
-      <!-- Puedes añadir más proyectos con los mismos atributos data-lang -->
+      <!-- Más proyectos si quieres -->
     </ul>
   </section>
 
@@ -92,7 +41,9 @@
     <a id="github-link" target="_blank">GitHub</a>
     <a id="cv-link" target="_blank"><span id="cv-text">CV</span></a>
   </footer>
-  <!-- Script externo que actualiza los botones sociales -->
+
+  <!-- Scripts -->
   <script src="socialButtons.js"></script>
+  <script src="navbar.js"></script>
+
 </body>
-</html>
